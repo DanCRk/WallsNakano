@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.WallsNakano" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/principal_salmon</item>
+        <item name="colorPrimaryVariant">@color/principal_salmon_oscuro</item>
+        <item name="colorOnPrimary">@color/principal_salmon_claro</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secundario_naranja</item>
+        <item name="colorSecondaryVariant">@color/secundario_naranja_oscuro</item>
+        <item name="colorOnSecondary">@color/secundario_naranja_claro</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.WallsNakano.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.WallsNakano.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WallsNakano.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

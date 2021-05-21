@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    // Colores Principales Day
+    <color name="principal_salmon">#ffebee</color>
+    <color name="principal_salmon_oscuro">#ccb9bc</color>
+    <color name="principal_salmon_claro">#ffffff</color>
+    // Colores Secundarios Day
+    <color name="secundario_naranja">#ff8a80</color>
+    <color name="secundario_naranja_oscuro">#c85a54</color>
+    <color name="secundario_naranja_claro">#ffbcaf</color>
+
+    // Colores Principales Night
+    <color name="principal_negro">#2B2B2B</color>
+    <color name="principal_negro_oscuro">#000000</color>
+    <color name="principal_negro_claro">#545454</color>
+    // Colores Secundarios Night
+    <color name="secundario_morado">#412649</color>
+    <color name="secundario_morado_oscuro">#1c0022</color>
+    <color name="secundario_morado_claro">#6d4f75</color>
+
+</resources>
