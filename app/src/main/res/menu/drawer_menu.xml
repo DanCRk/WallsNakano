@@ -5,32 +5,47 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-        android:id="@+id/calificanos"
-        android:title="Calificanos"
-        android:checkable="true">
-    </item>
+            android:id="@+id/upgrade_menu"
+            android:title="@string/upgrade"
+            android:checkable="true"
+            android:icon="@drawable/ic_upgrade">
+        </item>
+        <item
+            android:id="@+id/inicio_menu"
+            android:title="@string/inicio"
+            android:checkable="true"
+            android:icon="@drawable/ic_home">
+        </item>
+        <item
+            android:id="@+id/favoritos_menu"
+            android:title="@string/favoritos"
+            android:checkable="true"
+            android:icon="@drawable/ic_favorito">
+        </item>
+        <item
+            android:id="@+id/perfil_menu"
+            android:title="@string/perfil"
+            android:checkable="true"
+            android:icon="@drawable/ic_perfil">
+        </item>
+        <item
+            android:id="@+id/calificanos_menu"
+            android:title="Calificanos"
+            android:checkable="true"
+            android:icon="@drawable/ic_calificanos">
+        </item>
+        <item
+            android:id="@+id/configuracion_menu"
+            android:title="Configuracion"
+            android:checkable="true"
+            android:icon="@drawable/ic_ajustes">
+        </item>
+        <item
+            android:id="@+id/modo_oscuro_menu"
+            android:title="Modo Oscuro"
+            android:checkable="true"
+            android:icon="@drawable/ic_luna">
+        </item>
     </group>
 
-    <group>
-        <item
-            android:id="@+id/privacidad"
-            android:title="Acuerdo de Privacidad"
-            android:checkable="true">
-        </item>
-        <item
-            android:id="@+id/acerca_de"
-            android:title="Acerca de"
-            android:checkable="true">
-        </item>
-        <item
-            android:id="@+id/comparte"
-            android:title="Comparte la app"
-            android:checkable="true">
-        </item>
-        <item
-            android:id="@+id/ayuda"
-            android:title="Ayuda"
-            android:checkable="true">
-        </item>
-    </group>
 </menu>
