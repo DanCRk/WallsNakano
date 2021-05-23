@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+        android:id="@+id/calificanos"
+        android:title="Calificanos"
+        android:checkable="true">
+    </item>
+    </group>
+
+    <group>
+        <item
+            android:id="@+id/privacidad"
+            android:title="Acuerdo de Privacidad"
+            android:checkable="true">
+        </item>
+        <item
+            android:id="@+id/acerca_de"
+            android:title="Acerca de"
+            android:checkable="true">
+        </item>
+        <item
+            android:id="@+id/comparte"
+            android:title="Comparte la app"
+            android:checkable="true">
+        </item>
+        <item
+            android:id="@+id/ayuda"
+            android:title="Ayuda"
+            android:checkable="true">
+        </item>
+    </group>
+</menu>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:background="#00FFEBEE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorColor="#2196F3"
+        app:tabTextColor="@color/color_texto"
+        app:tabMode="scrollable">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/opcion1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CATEGORIAS" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/opcion2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NINO" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/opcion3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ITSUKI" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/opcion4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MIKU" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/opcion5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YOTSUBA" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/opcion6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ICHIKA" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="148dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
