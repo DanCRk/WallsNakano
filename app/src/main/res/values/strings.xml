@@ -8,5 +8,6 @@
     <string name="inicio">Inicio</string>
     <string name="favoritos">Favoritos</string>
     <string name="perfil">Perfil</string>
+    <string name="login">Login</string>
 
 </resources>

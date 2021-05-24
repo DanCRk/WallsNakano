@@ -7,57 +7,73 @@
     android:orientation="vertical"
     tools:ignore="HardcodedText">
 
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
-        android:background="#00FFEBEE"
+        android:padding="20dp"
+        android:layout_marginTop="38dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="#2196F3"
-        app:tabTextColor="@color/color_texto"
-        app:tabMode="scrollable">
+        android:clipToPadding="false">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/opcion1"
-            android:layout_width="wrap_content"
+        <View
+            android:id="@+id/indicator"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/gradiente_bg"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CATEGORIAS" />
+            android:background="@drawable/tab_bg"
+            app:tabTextColor="@color/color_texto"
+            app:tabMode="scrollable"
+            app:tabIndicatorColor="@null"
+            app:tabRippleColor="@null">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/opcion2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NINO" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/opcion1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CATEGORIAS" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/opcion3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ITSUKI" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/opcion2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NINO" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/opcion4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MIKU" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/opcion3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ITSUKI" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/opcion5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="YOTSUBA" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/opcion4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MIKU" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/opcion6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ICHIKA" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/opcion5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YOTSUBA" />
 
-    </com.google.android.material.tabs.TabLayout>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/opcion6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ICHIKA" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+    </FrameLayout>
+
+
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

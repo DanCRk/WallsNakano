@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Establecer evento onclick al navigationView
 
         navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.setItemIconTintList(null);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(false);
