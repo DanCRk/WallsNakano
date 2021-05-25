@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="HardcodedText"
     tools:showIn="navigation_view">
@@ -20,7 +21,8 @@
             android:id="@+id/favoritos_menu"
             android:title="@string/favoritos"
             android:checkable="true"
-            android:icon="@drawable/ic_favorito">
+            android:icon="@drawable/ic_favorito"
+            >
         </item>
         <item
             android:id="@+id/perfil_menu"
@@ -43,9 +45,9 @@
         <item
             android:id="@+id/modo_oscuro_menu"
             android:title="Modo Oscuro"
-            android:checkable="true"
-            android:icon="@drawable/ic_luna">
-        </item>
+            app:actionLayout="@layout/switch_item"
+            android:icon="@drawable/ic_luna"/>
     </group>
+
 
 </menu>

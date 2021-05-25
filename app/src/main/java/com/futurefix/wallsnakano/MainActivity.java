@@ -10,7 +10,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -25,14 +27,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Referenciar las weas locas
+        url= "https://play.google.com/store/apps/details?id=com.futurefix.wallsnakano";
 
+        // Referenciar las weas locas
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
@@ -40,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Icono para el menu lateral
 
         Drawable icono = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_barrasmenu, this.getTheme());
-
 
         // Establecer evento onclick al navigationView
 
@@ -79,6 +82,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         drawerLayout.closeDrawer(GravityCompat.START);
+        if (menuItem.getItemId() == R.id.upgrade_menu) {
+        }
+        if (menuItem.getItemId() == R.id.inicio_menu) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        if (menuItem.getItemId() == R.id.favoritos_menu) {
+        }
+        if (menuItem.getItemId() == R.id.perfil_menu) {
+        }
+        if (menuItem.getItemId() == R.id.calificanos_menu) {
+            Uri uri = Uri.parse(url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+            finish();
+        }
+        if (menuItem.getItemId() == R.id.configuracion_menu) {
+        }
+        if (menuItem.getItemId()==R.id.modo_oscuro_menu){
+        }
         return false;
     }
+
 }
