@@ -9,5 +9,9 @@
     <string name="favoritos">Favoritos</string>
     <string name="perfil">Perfil</string>
     <string name="login">Login</string>
+    <string name="configuracion">Configuracion</string>
+    <string name="modo_oscurp">Modo oscuro</string>
+    <string name="apariencia">Apariencia</string>
+    <string name="columnas">Columnas</string>
 
 </resources>

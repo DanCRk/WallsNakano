@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "882773954106",
+    "project_id": "wallsnakano",
+    "storage_bucket": "wallsnakano.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882773954106:android:c2d70754bd48abe1d12f03",
+        "android_client_info": {
+          "package_name": "com.futurefix.wallsnakano"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882773954106-cf01pbqqtcc9m0haocvmtpk25ava30ko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE5Xub4etCEZgwVKf5STNjPCdaQRmZPfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882773954106-cf01pbqqtcc9m0haocvmtpk25ava30ko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

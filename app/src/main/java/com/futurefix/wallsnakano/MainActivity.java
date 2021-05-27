@@ -15,7 +15,9 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.futurefix.wallsnakano.fragments.ConfiguracionFragment;
 import com.futurefix.wallsnakano.fragments.MainFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     private String url;
+    TextView textoToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         url= "https://play.google.com/store/apps/details?id=com.futurefix.wallsnakano";
 
         // Referenciar las weas locas
+        textoToolbar = findViewById(R.id.texto_toolbar);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
@@ -99,6 +103,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             finish();
         }
         if (menuItem.getItemId() == R.id.configuracion_menu) {
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container, new ConfiguracionFragment());
+            fragmentTransaction.commit();
+            textoToolbar.setText(R.string.configuracion);
         }
         if (menuItem.getItemId()==R.id.modo_oscuro_menu){
         }
