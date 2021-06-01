@@ -22,7 +22,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
         this.numTabs = behavior;
     }
 
-    @NonNull
+
     @NotNull
     @Override
     public Fragment getItem(int position) {

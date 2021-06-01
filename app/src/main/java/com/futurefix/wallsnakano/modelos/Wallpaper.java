@@ -1,5 +1,7 @@
 package com.futurefix.wallsnakano.modelos;
 
+import java.util.Objects;
+
 public class Wallpaper {
     private String id;
     private String nombre;
@@ -78,4 +80,10 @@ public class Wallpaper {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return id.equals(((Wallpaper)o).id);
+    }
+
 }
