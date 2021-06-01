@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -25,12 +26,17 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
     int layout;
     Fragment fragment;
     Context Context;
+    int codigo;
 
-    public WallpaperAdapter(List<Wallpaper> lista, int layout, Fragment fragment, android.content.Context context) {
+    final public int CODE_CATEGORIAS = 22;
+    final public int CODE_WALLPAPER = 21;
+
+    public WallpaperAdapter(List<Wallpaper> lista, int layout, Fragment fragment, android.content.Context context, int codigo) {
         this.lista = lista;
         this.layout = layout;
         this.fragment = fragment;
         Context = context;
+        this.codigo = codigo;
     }
 
     @NonNull
@@ -44,7 +50,12 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
     @Override
     public void onBindViewHolder(@NonNull @NotNull WallpaperHolder holder, int position) {
         Wallpaper wallpaper = lista.get(position);
-        Glide.with(fragment).load(wallpaper.getUrl()).into(holder.wallpview);
+        if (codigo==CODE_CATEGORIAS){
+            Glide.with(fragment).load(wallpaper.getUrl()).into(holder.catView);
+            holder.nombreCat.setText(wallpaper.getNombre());
+        }else if (codigo==CODE_WALLPAPER){
+            Glide.with(fragment).load(wallpaper.getUrl()).into(holder.wallpView);
+        }
     }
 
     @Override
@@ -54,12 +65,14 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
 
 
     public static class WallpaperHolder extends RecyclerView.ViewHolder {
-        ImageView wallpview;
+        ImageView wallpView, catView;
+        TextView nombreCat;
 
         public WallpaperHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            wallpview = itemView.findViewById(R.id.item_url);
-
+            wallpView = itemView.findViewById(R.id.item_url);
+            catView = itemView.findViewById(R.id.item_url_cat);
+            nombreCat = itemView.findViewById(R.id.titulo_cat);
         }
     }
 }

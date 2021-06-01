@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="165dp"
+    android:orientation="vertical"
+    android:paddingTop="5dp"
+    android:paddingStart="23dp">
+
+    <ImageView
+        android:id="@+id/cargando_cat"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/splash"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/item_url_cat"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription"
+        android:src="@drawable/splash"/>
+
+    <TextView
+        android:id="@+id/titulo_cat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_url_cat"
+        android:layout_alignEnd="@+id/item_url_cat"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="22dp"
+        android:fontFamily="@font/fuente_medium"
+        android:text="LoremIpsum"
+        android:textColor="@color/color_texto"/>
+
+</RelativeLayout>
