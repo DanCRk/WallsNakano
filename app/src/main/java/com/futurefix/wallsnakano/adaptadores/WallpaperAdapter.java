@@ -57,14 +57,11 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
             holder.nombreCat.setText(wallpaper.getNombre());
         }else if (codigo==CODE_WALLPAPER){
             Glide.with(fragment).load(wallpaper.getUrl()).into(holder.wallpView);
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), VistaWallpaper.class);
-                    intent.putExtra("ItemUrl", wallpaper.getUrl());
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(v.getContext(), VistaWallpaper.class);
+                intent.putExtra("ItemUrl", wallpaper.getUrl());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             });
         }
 
