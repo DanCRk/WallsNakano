@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="161dp"
-    android:layout_height="300dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="2dp"
+    android:paddingEnd="2dp"
+    android:paddingBottom="3dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <ImageView
@@ -11,17 +15,27 @@
         android:layout_height="65dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="145dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="100dp"
         android:src="@drawable/splash"
         tools:ignore="ContentDescription" />
 
-    <ImageView
-        android:id="@+id/item_url"
-        android:src="@drawable/splash"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="centerCrop"
-        tools:ignore="ContentDescription"/>
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="8dp"
+        android:elevation="10dp"
+        android:layout_height="280dp"
+        android:layout_width="161dp">
+
+        <ImageView
+            android:id="@+id/item_url"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/splash"
+            android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
+
+
+
+
 
 </RelativeLayout>
