@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,13 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapter;
-import com.futurefix.wallsnakano.adaptadores.WallpaperService;
+import com.futurefix.wallsnakano.adaptadores.WallpaperServiceNino;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,53 +42,46 @@ public class NinoFragment extends Fragment {
 
         // Referenciar
         rc = view.findViewById(R.id.recyclerViewWallpaper);
-
         // Cargar Lista
-
-        rc.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperService.wallpapers, R.layout.item, getParentFragment(), getActivity());
-        rc.setAdapter(adapter);
-
+        cargarLista();
         // Cargar Datos
+        cargarDatos();
+        return view;
+    }
 
+    public void cargarLista() {
+        rc.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperServiceNino.wallpaperNino, R.layout.item, getParentFragment(), getContext());
+        rc.setAdapter(adapter);
+    }
+
+    public void cargarDatos() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Wallpapers");
-        reference.getRef();
-        reference.addChildEventListener(new ChildEventListener() {
+        Query query = reference.orderByChild("nombre").equalTo("nino");
+        query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
                 try {
                     Wallpaper wallpaper = snapshot.getValue(Wallpaper.class);
                     assert wallpaper != null;
                     wallpaper.setId(snapshot.getKey());
-                    WallpaperService.addWallpaper(wallpaper);
+                    if (!WallpaperServiceNino.wallpaperNino.contains(wallpaper)){
+                        WallpaperServiceNino.addWallpaper(wallpaper);
+                    }
                     Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
                 }catch (Exception e){
                     Toast.makeText(getActivity(), "Error, no se pueden cargar los wallpapers", Toast.LENGTH_LONG).show();
                 }
             }
-
             @Override
-            public void onChildChanged(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
-                Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
-            }
-
+            public void onChildChanged(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) { }
             @Override
-            public void onChildRemoved(@NonNull @NotNull DataSnapshot snapshot) {
-                Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
-            }
-
+            public void onChildRemoved(@NonNull @NotNull DataSnapshot snapshot) { }
             @Override
-            public void onChildMoved(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
-                Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
-            }
-
+            public void onChildMoved(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) { }
             @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
-            }
+            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
         });
-
-        return view;
     }
 }
