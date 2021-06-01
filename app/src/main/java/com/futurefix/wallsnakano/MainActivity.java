@@ -15,6 +15,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.futurefix.wallsnakano.fragments.ConfiguracionFragment;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentTransaction fragmentTransaction;
     private String url;
     TextView textoToolbar;
+    ImageView buscador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +43,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         url= "https://play.google.com/store/apps/details?id=com.futurefix.wallsnakano";
 
         // Referenciar las weas locas
+        buscador = findViewById(R.id.buscador);
         textoToolbar = findViewById(R.id.texto_toolbar);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
+
+        buscador.setVisibility(View.VISIBLE);
 
         // Icono para el menu lateral
 
@@ -86,16 +92,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         drawerLayout.closeDrawer(GravityCompat.START);
+        /*
         if (menuItem.getItemId() == R.id.upgrade_menu) {
         }
+        */
         if (menuItem.getItemId() == R.id.inicio_menu) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            buscador.setVisibility(View.VISIBLE);
         }
+        /*
         if (menuItem.getItemId() == R.id.favoritos_menu) {
         }
         if (menuItem.getItemId() == R.id.perfil_menu) {
         }
+        */
         if (menuItem.getItemId() == R.id.calificanos_menu) {
             Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -108,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.container, new ConfiguracionFragment());
             fragmentTransaction.commit();
             textoToolbar.setText(R.string.configuracion);
+            buscador.setVisibility(View.INVISIBLE);
         }
         if (menuItem.getItemId()==R.id.modo_oscuro_menu){
         }
