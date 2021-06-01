@@ -7,7 +7,8 @@
     android:paddingEnd="2dp"
     android:paddingBottom="3dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="ContentDescription">
 
     <ImageView
         android:id="@+id/cargando"
@@ -17,14 +18,14 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="45dp"
         android:layout_marginTop="100dp"
-        android:src="@drawable/splash"
-        tools:ignore="ContentDescription" />
+        android:src="@drawable/splash"/>
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="8dp"
         android:elevation="10dp"
         android:layout_height="280dp"
-        android:layout_width="161dp">
+        android:layout_width="161dp"
+        android:background="@android:color/transparent">
 
         <ImageView
             android:id="@+id/item_url"
