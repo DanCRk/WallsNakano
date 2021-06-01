@@ -50,7 +50,7 @@ public class IchikaFragment extends Fragment {
 
     public void cargarLista() {
         rc.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperServiceIchika.wallpaperIchika, R.layout.item, getParentFragment(), getContext());
+        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperServiceIchika.wallpaperIchika, R.layout.item_wallpaper, getParentFragment(), getContext(),21);
         rc.setAdapter(adapter);
     }
 

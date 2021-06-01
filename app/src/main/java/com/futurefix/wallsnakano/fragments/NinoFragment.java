@@ -39,7 +39,6 @@ public class NinoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.wallpapers_fragment, container, false);
-
         // Referenciar
         rc = view.findViewById(R.id.recyclerViewWallpaper);
         // Cargar Lista
@@ -51,7 +50,7 @@ public class NinoFragment extends Fragment {
 
     public void cargarLista() {
         rc.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperServiceNino.wallpaperNino, R.layout.item, getParentFragment(), getContext());
+        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperServiceNino.wallpaperNino, R.layout.item_wallpaper, getParentFragment(), getContext(),21);
         rc.setAdapter(adapter);
     }
 
