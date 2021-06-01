@@ -46,6 +46,10 @@
             android:icon="@drawable/ic_ajustes">
         </item>
         <item
+            android:id="@+id/comparte_menu"
+            android:title="Comparte"
+            android:icon="@drawable/ic_comparte"/>
+        <item
             android:id="@+id/modo_oscuro_menu"
             android:title="Modo Oscuro"
             app:actionLayout="@layout/switch_item"
