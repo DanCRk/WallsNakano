@@ -2,6 +2,7 @@ package com.futurefix.wallsnakano.adaptadores;
 
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -36,14 +37,14 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
     @NotNull
     @Override
     public WallpaperHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
+        return new WallpaperHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull WallpaperHolder holder, int position) {
-        Wallpaper Wallpaper = lista.get(position);
-        Glide
+        Wallpaper wallpaper = lista.get(position);
+        Glide.with(fragment).load(wallpaper.getUrl()).into(holder.wallpview);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
     }
 
 
-    public class WallpaperHolder extends RecyclerView.ViewHolder {
+    public static class WallpaperHolder extends RecyclerView.ViewHolder {
         ImageView wallpview;
 
         public WallpaperHolder(@NonNull @NotNull View itemView) {
