@@ -2,6 +2,7 @@ package com.futurefix.wallsnakano.adaptadores;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.futurefix.wallsnakano.R;
+import com.futurefix.wallsnakano.VistaWallpaper;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +27,7 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
     List<Wallpaper> lista;
     int layout;
     Fragment fragment;
-    Context Context;
+    Context context;
     int codigo;
 
     final public int CODE_CATEGORIAS = 22;
@@ -35,7 +37,7 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
         this.lista = lista;
         this.layout = layout;
         this.fragment = fragment;
-        Context = context;
+        this.context = context;
         this.codigo = codigo;
     }
 
@@ -55,7 +57,17 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
             holder.nombreCat.setText(wallpaper.getNombre());
         }else if (codigo==CODE_WALLPAPER){
             Glide.with(fragment).load(wallpaper.getUrl()).into(holder.wallpView);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), VistaWallpaper.class);
+                    intent.putExtra("ItemUrl", wallpaper.getUrl());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
         }
+
     }
 
     @Override
