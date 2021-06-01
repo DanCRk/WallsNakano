@@ -50,6 +50,10 @@
             android:title="Comparte"
             android:icon="@drawable/ic_comparte"/>
         <item
+            android:id="@+id/info_menu"
+            android:title="Acerca de"
+            android:icon="@drawable/ic_info"/>
+        <item
             android:id="@+id/modo_oscuro_menu"
             android:title="Modo Oscuro"
             app:actionLayout="@layout/switch_item"
