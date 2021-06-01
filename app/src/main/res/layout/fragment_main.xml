@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:ignore="HardcodedText">
+    tools:ignore="HardcodedText"
+    android:layout_gravity="center_horizontal">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -13,9 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:clipToPadding="false"
-        android:paddingTop="5dp"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
