@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
 
