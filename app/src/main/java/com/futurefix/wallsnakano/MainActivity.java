@@ -8,22 +8,14 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.futurefix.wallsnakano.fragments.ConfiguracionFragment;
 import com.futurefix.wallsnakano.fragments.MainFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -33,8 +25,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
-    FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
     Fragment newFragment = null;
     private String url;
     TextView textoToolbar;
@@ -108,29 +98,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        /*
-        if (menuItem.getItemId() == R.id.upgrade_menu) {
-        }
-        */
-        /*
-        if (menuItem.getItemId() == R.id.favoritos_menu) {
-        }
-        if (menuItem.getItemId() == R.id.perfil_menu) {
-        }
-        */
+//        if (menuItem.getItemId() == R.id.upgrade_menu) {
+//        }
+//        if (menuItem.getItemId() == R.id.favoritos_menu) {
+//        }
+//        if (menuItem.getItemId() == R.id.perfil_menu) {
+//        }
         if (menuItem.getItemId() == R.id.calificanos_menu) {
             Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
             finish();
         }
-        if (menuItem.getItemId() == R.id.configuracion_menu) {
-            fragmentManager = getSupportFragmentManager();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container, new ConfiguracionFragment());
-            fragmentTransaction.commit();
-            textoToolbar.setText(R.string.configuracion);
-        }
+//        if (menuItem.getItemId() == R.id.configuracion_menu) {
+//        }
 //        if (menuItem.getItemId()==R.id.modo_oscuro_menu){
 //        }
         
