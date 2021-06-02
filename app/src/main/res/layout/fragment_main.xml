@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:ignore="HardcodedText"
-    android:layout_gravity="center_horizontal">
+    android:layout_gravity="center_horizontal"
+    android:configChanges="colorMode">
 
     <FrameLayout
         android:id="@+id/frameLayout"

@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -34,9 +35,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
+    Fragment newFragment = null;
     private String url;
     TextView textoToolbar;
-    ImageView buscador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,20 +46,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         url= "https://play.google.com/store/apps/details?id=com.futurefix.wallsnakano";
 
         // Referenciar las weas locas
-        buscador = findViewById(R.id.buscador);
         textoToolbar = findViewById(R.id.texto_toolbar);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
-
-        buscador.setVisibility(View.VISIBLE);
 
         // Icono para el menu lateral
 
         Drawable icono = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_barrasmenu, this.getTheme());
 
         // Establecer evento onclick al navigationView
-
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
@@ -76,13 +73,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
 
         // Cargar fragment principal
+        newFragment = new MainFragment();
 
+/*
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container, new MainFragment());
         fragmentTransaction.commit();
+*/
+
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.container);
+
+        if (currentFragment == null) {
+            //carga del primer fragment justo en la carga inicial de la app
+            loadFragment(newFragment);
+        } else if (!currentFragment.getClass().getName().equalsIgnoreCase(newFragment.getClass().getName())) {
+            //currentFragment no concide con newFragment
+            loadFragment(newFragment);
+
+        }
     }
 
+    private void loadFragment(Fragment newFragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, newFragment, newFragment.getClass().getName())
+                .commit();
+    }
 
     @Override
     public void onBackPressed() {
@@ -100,11 +116,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (menuItem.getItemId() == R.id.upgrade_menu) {
         }
         */
-        if (menuItem.getItemId() == R.id.inicio_menu) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            buscador.setVisibility(View.VISIBLE);
-        }
         /*
         if (menuItem.getItemId() == R.id.favoritos_menu) {
         }
@@ -123,12 +134,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.container, new ConfiguracionFragment());
             fragmentTransaction.commit();
             textoToolbar.setText(R.string.configuracion);
-            buscador.setVisibility(View.INVISIBLE);
         }
-        if (menuItem.getItemId()==R.id.modo_oscuro_menu){
-        }
+//        if (menuItem.getItemId()==R.id.modo_oscuro_menu){
+//        }
         
         return false;
     }
+
+
 
 }
