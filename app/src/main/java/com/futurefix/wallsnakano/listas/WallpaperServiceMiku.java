@@ -1,4 +1,4 @@
-package com.futurefix.wallsnakano.adaptadores;
+package com.futurefix.wallsnakano.listas;
 
 import com.futurefix.wallsnakano.modelos.Wallpaper;
 
