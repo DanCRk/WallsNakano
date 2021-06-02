@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapter;
-import com.futurefix.wallsnakano.adaptadores.WallpaperServiceCategorias;
+import com.futurefix.wallsnakano.listas.WallpaperServiceCategorias;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
