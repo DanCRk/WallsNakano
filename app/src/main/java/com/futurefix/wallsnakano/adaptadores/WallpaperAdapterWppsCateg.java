@@ -1,6 +1,7 @@
 package com.futurefix.wallsnakano.adaptadores;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,12 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.bumptech.glide.Glide;
-import com.futurefix.wallsnakano.CategoriasWpps;
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.VistaWallpaper;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
@@ -24,22 +22,17 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.WallpaperHolder>{
+public class WallpaperAdapterWppsCateg extends RecyclerView.Adapter<WallpaperAdapterWppsCateg.WallpaperHolder>{
     List<Wallpaper> lista;
     int layout;
-    Fragment fragment;
+    Activity activity;
     Context context;
-    int codigo;
 
-    final public int CODE_CATEGORIAS = 22;
-    final public int CODE_WALLPAPER = 21;
-
-    public WallpaperAdapter(List<Wallpaper> lista, int layout, Fragment fragment, android.content.Context context, int codigo) {
+    public WallpaperAdapterWppsCateg(List<Wallpaper> lista, int layout, Activity activity, Context context) {
         this.lista = lista;
         this.layout = layout;
-        this.fragment = fragment;
+        this.activity = activity;
         this.context = context;
-        this.codigo = codigo;
     }
 
     @NonNull
@@ -53,25 +46,13 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
     @Override
     public void onBindViewHolder(@NonNull @NotNull WallpaperHolder holder, int position) {
         Wallpaper wallpaper = lista.get(position);
-        if (codigo==CODE_CATEGORIAS){
-            Glide.with(fragment).load(wallpaper.getUrl()).into(holder.catView);
-            holder.nombreCat.setText(wallpaper.getNombre());
-            holder.itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(v.getContext(), CategoriasWpps.class);
-                intent.putExtra("ItemTag", wallpaper.getTag1());
-                intent.putExtra("ItemNombre", wallpaper.getNombre());
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            });
-        }else if (codigo==CODE_WALLPAPER){
-            Glide.with(fragment).load(wallpaper.getUrl()).into(holder.wallpView);
-            holder.itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(v.getContext(), VistaWallpaper.class);
-                intent.putExtra("ItemUrl", wallpaper.getUrl());
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            });
-        }
+        Glide.with(activity).load(wallpaper.getUrl()).into(holder.wallpView);
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), VistaWallpaper.class);
+            intent.putExtra("ItemUrl", wallpaper.getUrl());
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
 
     }
 

@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WallsNakano"
         tools:ignore="AllowBackup">
-        <activity android:name=".VistaWallpaper"/>
+        <activity android:name=".CategoriasWpps" />
+        <activity android:name=".VistaWallpaper" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashActivity"
