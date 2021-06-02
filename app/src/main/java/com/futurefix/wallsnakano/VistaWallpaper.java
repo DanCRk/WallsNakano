@@ -18,20 +18,20 @@ import jp.wasabeef.blurry.Blurry;
 
 public class VistaWallpaper extends AppCompatActivity {
 
-    ImageView img_fondo, img;
+    ImageView img_fondo, img_ampliada,img;
     ImageButton cerrar;
     Uri url;
     private View rootView;
+    boolean ampliado=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_vista_wallpaper);
 
         cerrar = findViewById(R.id.boton_cerrar_vista);
         img = findViewById(R.id.imagen_vista);
+        img_ampliada = findViewById(R.id.imagen_vista_ampliada);
         img_fondo = findViewById(R.id.imagen_vista_fondo);
         rootView = (View) findViewById(R.id.content);
 
@@ -40,19 +40,24 @@ public class VistaWallpaper extends AppCompatActivity {
 
         Glide.with(this).load(url).into(img);
         Glide.with(this).load(url).into(img_fondo);
+        Glide.with(this).load(url).into(img_ampliada);
 
-        rootView.post(new Runnable() {
-            @Override
-            public void run() {
-                Blurry.with(getApplicationContext()).capture(rootView).into(img_fondo);
+        rootView.post(() -> Blurry.with(getApplicationContext()).capture(rootView).into(img_fondo));
+
+        img_ampliada.setOnClickListener(v -> {
+            if (ampliado){
+                img_ampliada.setVisibility(View.GONE);
+                ampliado = !ampliado;
             }
         });
 
-        cerrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
+        img.setOnClickListener(v -> {
+            if (!ampliado){
+                img_ampliada.setVisibility(View.VISIBLE);
+                ampliado = !ampliado;
             }
         });
+
+        cerrar.setOnClickListener(v -> finish());
     }
 }
