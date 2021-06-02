@@ -41,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-            }, 2500);
+            }, 1000);
 
             return mobile != null && mobile.isConnectedOrConnecting() ||
                     (wifi != null && wifi.isConnectedOrConnecting());
