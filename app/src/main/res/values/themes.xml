@@ -19,7 +19,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.WallsNakano.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
+    <style name="Theme.WallsNakano.Transparent" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:statusBarColor" tools:targetApi="l">@android:color/transparent</item>
+    </style>
     <style name="Theme.WallsNakano.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
