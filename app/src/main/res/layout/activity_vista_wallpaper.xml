@@ -2,28 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/content"
-    tools:context=".VistaWallpaper">
-
+    tools:context=".VistaWallpaper"
+    tools:visibility="visible">
         <ImageView
             android:id="@+id/imagen_vista_fondo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/splash"
+            android:contentDescription="@null"
             android:scaleType="centerCrop"
-            android:contentDescription="@null"/>
-
+            android:src="@drawable/splash" />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#81000000"
+            android:background="#6A000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
-
         <ImageButton
             android:id="@+id/boton_cerrar_vista"
             android:layout_width="wrap_content"
@@ -36,30 +34,53 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="55dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@android:color/transparent"
             app:cardBackgroundColor="@android:color/transparent"
             app:cardCornerRadius="20dp">
-
                 <ImageView
                     android:id="@+id/imagen_vista"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@null"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/splash"/>
+                    android:src="@drawable/splash" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="bottom|center_horizontal">
+                        <ImageButton
+                            android:id="@+id/buttondescarga"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/ic_descarga"
+                            android:visibility="visible"
+                            tools:visibility="visible"
+                            android:layout_margin="15dp"/>
+                        <ImageButton
+                            android:id="@+id/buttonsetwpp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/ic_wpp"
+                            android:visibility="visible"
+                            tools:visibility="visible"
+                            android:layout_margin="3dp"/>
+                        <ImageButton
+                            android:id="@+id/buttondesca"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/ic_descarga"
+                            android:visibility="visible"
+                            tools:visibility="visible"
+                            android:layout_margin="15dp"/>
+                </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-
-
 </RelativeLayout>
