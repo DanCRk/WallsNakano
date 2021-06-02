@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Establecer evento onclick al navigationView
 
+
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.add(R.id.container, new MainFragment());
         fragmentTransaction.commit();
     }
+
 
     @Override
     public void onBackPressed() {
@@ -124,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if (menuItem.getItemId()==R.id.modo_oscuro_menu){
         }
+        
         return false;
     }
 
