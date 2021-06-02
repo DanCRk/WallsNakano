@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:text="Nier Wallpapers"
+            android:text="Nakano's Wallpapers"
             android:textSize="23sp"
             android:textColor="@color/color_texto"
             tools:ignore="HardcodedText" />
