@@ -74,23 +74,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Cargar fragment principal
         newFragment = new MainFragment();
-
-/*
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container, new MainFragment());
-        fragmentTransaction.commit();
-*/
-
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.container);
 
+        // Para que la mmda no se cargue dos veces :)
+        comprobar(currentFragment);
+    }
+
+    private void comprobar(Fragment currentFragment){
         if (currentFragment == null) {
             //carga del primer fragment justo en la carga inicial de la app
             loadFragment(newFragment);
         } else if (!currentFragment.getClass().getName().equalsIgnoreCase(newFragment.getClass().getName())) {
             //currentFragment no concide con newFragment
             loadFragment(newFragment);
-
         }
     }
 
