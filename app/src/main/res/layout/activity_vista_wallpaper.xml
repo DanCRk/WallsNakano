@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VistaWallpaper"
-    tools:visibility="visible">
+    tools:visibility="visible"
+    android:background="@color/principal">
         <ImageView
             android:id="@+id/imagen_vista_fondo"
             android:layout_width="match_parent"
@@ -36,8 +37,8 @@
             tools:ignore="ContentDescription" />
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="500dp"
+            android:layout_height="800dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="55dp"
             android:layout_marginEnd="20dp"
