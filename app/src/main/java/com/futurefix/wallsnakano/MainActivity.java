@@ -113,7 +113,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        if (menuItem.getItemId() == R.id.perfil_menu) {
 //        }
         if (menuItem.getItemId()==R.id.comparte_menu){
-
+            Intent compartir = new Intent(Intent.ACTION_SEND);
+            compartir.setType("text/plain");
+            String mensaje = "Mira esta app de Wallpapers de las Quintillizas: "+url;
+            compartir.putExtra(Intent.EXTRA_TEXT, mensaje);
+            startActivity(Intent.createChooser(compartir,"Compartir via"));
         }
         if (menuItem.getItemId() == R.id.calificanos_menu) {
             Uri uri = Uri.parse(url);
