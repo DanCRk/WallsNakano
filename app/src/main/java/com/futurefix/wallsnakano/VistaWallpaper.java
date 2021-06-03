@@ -73,7 +73,7 @@ public class VistaWallpaper extends AppCompatActivity {
         setwpp.setOnClickListener(v -> {
             try {
                 WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
-                BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();
+                BitmapDrawable drawable = (BitmapDrawable) imgcargar.getDrawable();
                 Bitmap bit = drawable.getBitmap();  // error java.lang.NullPointerException
                 wallpaperManager.setBitmap(bit);
                 Toast.makeText(VistaWallpaper.this, "Listo!", Toast.LENGTH_SHORT).show();
@@ -86,16 +86,7 @@ public class VistaWallpaper extends AppCompatActivity {
         descarga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
-                    BitmapDrawable drawable = (BitmapDrawable) imgcargar.getDrawable();
-                    Bitmap bit = drawable.getBitmap();  // error java.lang.NullPointerException
-                    wallpaperManager.setBitmap(bit);
-                    Toast.makeText(VistaWallpaper.this, "Listo!", Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    Toast.makeText(VistaWallpaper.this, "No se establecio el wallpaper", Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
+
             }
         });
 
