@@ -33,6 +33,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="25dp"
         android:text="@string/columnas"
+        android:textColor="@color/color_texto"
         android:fontFamily="@font/fuente_medium"/>
 
     <TextView
@@ -40,26 +41,56 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
-        android:text="@string/apariencia"
+        android:text="@string/dats"
         android:fontFamily="@font/fuente_medium"/>
 
-
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/switch_notificaciones"
+    <TextView
+        android:id="@+id/AppConfig"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/modo_oscurp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="13dp"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/confiapp"
+        android:textColor="@color/color_texto"
+        android:fontFamily="@font/fuente_medium"/>
+
+    <TextView
+        android:id="@+id/Notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/notifi"
+        android:textColor="@color/color_texto"
         android:fontFamily="@font/fuente_medium"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:text="@string/columnas"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/Otros"
         android:fontFamily="@font/fuente_medium"/>
+
+    <TextView
+        android:id="@+id/Aviso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/privacidad"
+        android:textColor="@color/color_texto"
+        android:fontFamily="@font/fuente_medium"/>
+
+    <TextView
+        android:id="@+id/Calificar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/calificanos"
+        android:textColor="@color/color_texto"
+        android:fontFamily="@font/fuente_medium"/>
+
 
 </LinearLayout>
