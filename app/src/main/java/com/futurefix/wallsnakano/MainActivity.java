@@ -110,8 +110,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             finish();
         }
-//        if (menuItem.getItemId() == R.id.configuracion_menu) {
-//        }
+        if (menuItem.getItemId() == R.id.configuracion_menu) {
+            Intent intent = new Intent(this, ConfigActivity.class);
+            startActivity(intent);
+        }
 //        if (menuItem.getItemId()==R.id.modo_oscuro_menu){
 //        }
         

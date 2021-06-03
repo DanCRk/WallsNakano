@@ -10,7 +10,6 @@
     android:configChanges="colorMode">
 
     <FrameLayout
-        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
@@ -18,22 +17,14 @@
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <View
-            android:id="@+id/indicator"
-            android:layout_width="0dp"
-            android:layout_height="50dp"/>
+        android:layout_marginEnd="5dp">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            app:tabIndicatorColor="@null"
+            app:tabIndicatorColor="@color/color_texto"
             app:tabMode="scrollable"
             app:tabRippleColor="@null"
             app:tabTextColor="@color/color_texto">
