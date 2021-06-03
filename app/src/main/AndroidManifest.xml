@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WallsNakano"
         tools:ignore="AllowBackup">
-        <activity android:name=".ConfigActivity"></activity>
+        <activity android:name=".ConfigActivity" />
         <activity android:name=".CategoriasWpps" />
         <activity android:name=".VistaWallpaper" />
         <activity android:name=".MainActivity" />
@@ -27,12 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service android:name=".Notificaciones">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>
