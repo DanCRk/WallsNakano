@@ -3,7 +3,6 @@ package com.futurefix.wallsnakano;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
@@ -12,13 +11,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
-import android.media.VolumeShaper;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.futurefix.wallsnakano.fragments.MainFragment;

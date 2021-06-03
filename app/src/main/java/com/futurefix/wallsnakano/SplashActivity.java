@@ -2,15 +2,16 @@ package com.futurefix.wallsnakano;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,9 +20,24 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+
+        // Agregar animaciones
+
+        Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba);
+        Animation animation2 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_abajo);
+
+        // Referenciar los id ahora si
+
+        TextView PorTextView =findViewById(R.id.PorTextView);
+        TextView FutureFixTextView =findViewById(R.id.FutureFixTextView);
+        ImageView LogoImageView = findViewById(R.id.LogoImageView);
+
+        // Asignar animaciones
+
+        PorTextView.setAnimation(animation2);
+        FutureFixTextView.setAnimation(animation2);
+        LogoImageView.setAnimation(animation1);
 
         //Validar si tiene conexion para dejarlo entrar en la aplicacion
         if (!EsCon(SplashActivity.this)) builderDialog(SplashActivity.this).show();
