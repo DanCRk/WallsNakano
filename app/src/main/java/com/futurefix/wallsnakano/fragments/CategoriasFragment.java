@@ -39,9 +39,9 @@ public class CategoriasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_categorias, container, false);
+        View view = inflater.inflate(R.layout.wallpapers_fragment, container, false);
         // Referenciar
-        rc = view.findViewById(R.id.recyclerViewCategorias);
+        rc = view.findViewById(R.id.recyclerViewWallpaper);
         // Cargar Lista
         cargarLista();
         // Cargar Datos
