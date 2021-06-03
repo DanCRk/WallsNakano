@@ -2,11 +2,13 @@ package com.futurefix.wallsnakano;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -56,9 +58,10 @@ public class SplashActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(c);
 
         builder.setTitle("Sin Conexion a Internet");
-        builder.setMessage("Esta aplicacion requiere de conexion a internet para cargar el contenido");
+        builder.setMessage("Esta aplicacion requiere de conexion a internet estable para cargar el contenido");
 
         builder.setPositiveButton("ok", (dialog, which) -> finish());
+        builder.setNegativeButton("Ajustes", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)));
         return builder;
     }
 }
