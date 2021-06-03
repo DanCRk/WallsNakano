@@ -13,8 +13,7 @@
             android:id="@+id/imagen_vista_fondo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/splash" />
+            android:scaleType="centerCrop"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -41,7 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@null"
-            android:src="@drawable/splash"
             android:layout_marginTop="60dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -57,7 +55,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="35dp">
+            android:layout_marginBottom="40dp">
 
                 <ImageButton
                     android:id="@+id/buttondescarga"
@@ -65,12 +63,15 @@
                     android:layout_height="70dp"
                     android:background="@drawable/ic_descarga"
                     android:visibility="visible"
+                    android:layout_marginTop="5dp"
                     tools:visibility="visible" />
 
                 <ImageButton
                     android:id="@+id/buttonsetwpp"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:background="@drawable/ic_wpp"
                     android:visibility="visible"
                     tools:visibility="visible" />
@@ -79,6 +80,7 @@
                     android:id="@+id/buttondesca"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/ic_descarga"
                     android:visibility="visible"
                     tools:visibility="visible" />
@@ -90,7 +92,6 @@
             android:layout_height="match_parent"
             android:contentDescription="@null"
             android:scaleType="centerCrop"
-            android:src="@drawable/splash"
             android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

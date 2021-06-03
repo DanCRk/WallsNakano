@@ -6,15 +6,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
-import jp.wasabeef.blurry.Blurry;
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class VistaWallpaper extends AppCompatActivity {
 
@@ -39,10 +37,8 @@ public class VistaWallpaper extends AppCompatActivity {
         url = Uri.parse(intent.getStringExtra("ItemUrl"));
 
         Glide.with(this).load(url).into(img);
-        Glide.with(this).load(url).into(img_fondo);
+        Glide.with(this).load(url).apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3))).into(img_fondo);
         Glide.with(this).load(url).into(img_ampliada);
-
-        rootView.post(() -> Blurry.with(getApplicationContext()).capture(rootView).into(img_fondo));
 
         img_ampliada.setOnClickListener(v -> {
             if (ampliado){
