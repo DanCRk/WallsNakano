@@ -20,7 +20,6 @@ public class VistaWallpaper extends AppCompatActivity {
     ImageView img_fondo, img_ampliada,img;
     ImageButton cerrar;
     Uri url;
-    private View rootView;
     boolean ampliado=false;
 
     @Override
@@ -34,7 +33,6 @@ public class VistaWallpaper extends AppCompatActivity {
         img = findViewById(R.id.imagen_vista);
         img_ampliada = findViewById(R.id.imagen_vista_ampliada);
         img_fondo = findViewById(R.id.imagen_vista_fondo);
-        rootView = (View) findViewById(R.id.content);
 
         final Intent intent = getIntent();
         url = Uri.parse(intent.getStringExtra("ItemUrl"));
@@ -58,5 +56,15 @@ public class VistaWallpaper extends AppCompatActivity {
         });
 
         cerrar.setOnClickListener(v -> finish());
+    }
+
+    @Override
+    public void onBackPressed() {
+       if (ampliado){
+           img_ampliada.setVisibility(View.GONE);
+           ampliado = !ampliado;
+       }else{
+           finish();
+       }
     }
 }
