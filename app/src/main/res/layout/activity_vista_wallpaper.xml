@@ -16,6 +16,11 @@
             android:scaleType="centerCrop"/>
 
         <ImageView
+            android:id="@+id/imagen_CARGAR"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#6A000000"
@@ -81,8 +86,8 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/ic_descarga"
-                    android:visibility="visible"
-                    tools:visibility="visible" />
+                    android:visibility="invisible"
+                    tools:visibility="invisible" />
         </LinearLayout>
 
         <ImageView
