@@ -13,8 +13,8 @@
     <color name="principal_dark">#000000</color>
     <color name="principal_claro">#545454</color>
     // Colores Secundarios Night
-    <color name="secundario">#545454</color>
 <!--    <color name="secundario">#412649</color>-->
+    <color name="secundario">#7E7E7E</color>
     <color name="secundario_dark">#1c0022</color>
     <color name="secundario_claro">#6d4f75</color>
 
