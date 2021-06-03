@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingTop="10dp"
+    android:paddingBottom="35dp"
     tools:ignore="ContentDescription">
 
     <ImageView
@@ -21,8 +22,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:background="@android:color/transparent"
         android:elevation="10dp"
         app:cardCornerRadius="8dp"

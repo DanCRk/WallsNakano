@@ -112,6 +112,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        }
 //        if (menuItem.getItemId() == R.id.perfil_menu) {
 //        }
+        if (menuItem.getItemId()==R.id.comparte_menu){
+
+        }
         if (menuItem.getItemId() == R.id.calificanos_menu) {
             Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
