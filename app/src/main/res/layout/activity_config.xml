@@ -36,6 +36,18 @@
         android:textColor="@color/color_texto"
         android:fontFamily="@font/fuente_medium"/>
 
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nunca wallpaper scrollable"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="13dp"
+        android:textColor="@color/color_texto"
+        android:fontFamily="@font/fuente_medium"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

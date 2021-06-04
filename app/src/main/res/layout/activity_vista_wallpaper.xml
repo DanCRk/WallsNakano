@@ -18,7 +18,9 @@
         <ImageView
             android:id="@+id/imagen_CARGAR"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            tools:visibility="invisible" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -97,5 +99,4 @@
             android:contentDescription="@null"
             android:scaleType="centerCrop"
             android:visibility="gone" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
