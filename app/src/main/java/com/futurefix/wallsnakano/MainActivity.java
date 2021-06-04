@@ -10,7 +10,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Para que la mmda no se cargue dos veces :)
         comprobar(currentFragment);
+
+        Estado.guardarEstado(load());
     }
 
     private void comprobar(Fragment currentFragment){
@@ -132,6 +136,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        save(Estado.estadoactual);
+        Estado.guardarEstado(load());
+    }
 
+    private void save(boolean isChecked) {
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("check", isChecked); editor.apply();
+    }
 
+    private boolean load() {
+        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("check", false);
+    }
 }
