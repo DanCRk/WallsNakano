@@ -10,7 +10,7 @@
 
     // Colores Principales Night
     <color name="principal">#2B2B2B</color>
-    <color name="principal_dark">#000000</color>
+    <color name="principal_dark">#202020</color>
     <color name="principal_claro">#545454</color>
     // Colores Secundarios Night
 <!--    <color name="secundario">#412649</color>-->

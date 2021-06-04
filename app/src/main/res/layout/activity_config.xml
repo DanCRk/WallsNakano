@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -27,22 +28,45 @@
         android:layout_marginEnd="13dp"
         android:fontFamily="@font/fuente_medium"/>
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="25dp"
-        android:text="@string/columnas"
-        android:textColor="@color/color_texto"
-        android:fontFamily="@font/fuente_medium"/>
+        android:layout_marginEnd="13dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:fontFamily="@font/fuente_medium"
+            android:text="@string/columnas"
+            android:textColor="@color/color_texto"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Spinner
+            android:id="@+id/spinner_columnas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nunca wallpaper scrollable"
+        android:text="@string/nunca_wallpaper_scrollable"
         android:layout_marginTop="20dp"
         android:gravity="center_vertical"
+        android:background="@drawable/bg_selector"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="13dp"
         android:textColor="@color/color_texto"
@@ -53,6 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/dats"
         android:fontFamily="@font/fuente_medium"/>
 
@@ -60,18 +85,24 @@
         android:id="@+id/AppConfig"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="25dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="25dp"
+        android:background="@drawable/bg_selector"
+        android:layout_marginBottom="5dp"
         android:text="@string/confiapp"
         android:textColor="@color/color_texto"
-        android:fontFamily="@font/fuente_medium"/>
+        android:fontFamily="@font/fuente_medium" />
 
     <TextView
         android:id="@+id/Notification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="25dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+
+        android:paddingStart="25dp"
+        android:background="@drawable/bg_selector"
         android:text="@string/notifi"
         android:textColor="@color/color_texto"
         android:fontFamily="@font/fuente_medium"/>
@@ -81,6 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/Otros"
         android:fontFamily="@font/fuente_medium"/>
 
@@ -88,8 +120,11 @@
         android:id="@+id/Aviso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="25dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="25dp"
+        android:background="@drawable/bg_selector"
+        android:layout_marginBottom="5dp"
         android:text="@string/privacidad"
         android:textColor="@color/color_texto"
         android:fontFamily="@font/fuente_medium"/>
@@ -98,8 +133,10 @@
         android:id="@+id/Calificar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="25dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="25dp"
+        android:background="@drawable/bg_selector"
         android:text="@string/calificanos"
         android:textColor="@color/color_texto"
         android:fontFamily="@font/fuente_medium"/>
