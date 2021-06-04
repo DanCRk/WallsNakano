@@ -1,19 +1,13 @@
 package com.futurefix.wallsnakano;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.app.WallpaperManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -78,9 +72,7 @@ public class VistaWallpaper extends AppCompatActivity {
             }
         });
 
-        setwpp.setOnClickListener(v -> {
-            cortarWallpaper(estadoactual);
-        });
+        setwpp.setOnClickListener(v -> cortarWallpaper(estadoactual));
 
         descarga.setOnClickListener(v -> {
 
@@ -104,8 +96,7 @@ public class VistaWallpaper extends AppCompatActivity {
                 Toast.makeText(VistaWallpaper.this, "Error, No se pudo establecer el wallpaper", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
-
-        }else if (bol){
+        }else {
             try {
                 WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
                 BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();
@@ -117,7 +108,6 @@ public class VistaWallpaper extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
     }
 
     @Override
