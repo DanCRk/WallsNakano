@@ -38,7 +38,7 @@ public class CategoriasWpps extends AppCompatActivity {
 
         final Intent intent = getIntent();
         String nombre = intent.getStringExtra("ItemNombre");
-        String tag1 = intent.getStringExtra("ItemTag");
+        String tag = intent.getStringExtra("ItemTag");
 
         rc = findViewById(R.id.recyclerViewWallpaperCategorias);
         tv = findViewById(R.id.texto_toolbar);
@@ -49,9 +49,10 @@ public class CategoriasWpps extends AppCompatActivity {
         // Cargar Lista
         cargarLista();
         // Cargar Datos
-        cargarDatos(tag1);
-
-
+        cargarDatos(tag, "tag1");
+        cargarDatos(tag, "tag2");
+        cargarDatos(tag, "tag3");
+        cargarDatos(tag, "tag4");
     }
 
     @Override
@@ -67,10 +68,10 @@ public class CategoriasWpps extends AppCompatActivity {
         rc.setAdapter(adapter);
     }
 
-    public void cargarDatos(String tag1) {
+    public void cargarDatos(String tag, String queTag) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Wallpapers");
-        Query query = reference.orderByChild("tag1").equalTo(tag1);
+        Query query = reference.orderByChild(queTag).equalTo(tag);
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
