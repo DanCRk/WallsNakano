@@ -26,10 +26,6 @@
         android:background="@color/principal"
         android:layout_gravity="start"
         app:itemTextColor="@color/color_texto"
-        app:menu="@menu/drawer_menu"
-        app:headerLayout="@layout/header"/>
-
-
-
+        app:menu="@menu/drawer_menu"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
