@@ -41,12 +41,9 @@ public class ConfigActivity extends AppCompatActivity {
 
         aviso = findViewById(R.id.Aviso);
 
-        aviso.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setContentView(R.layout.aviso_activity);
-                estadoAviso = true;
-            }
+        aviso.setOnClickListener(v -> {
+            setContentView(R.layout.aviso_activity);
+            estadoAviso = true;
         });
 
         TextView notis = findViewById(R.id.Notification);
