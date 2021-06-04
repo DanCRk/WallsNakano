@@ -21,7 +21,8 @@
             android:text="Nakano's Wallpapers"
             android:textSize="23sp"
             android:textColor="@color/color_texto"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:fontFamily="@font/fuente_light" />
 
         <TextView
             android:id="@+id/cuantoswpps"
@@ -32,7 +33,8 @@
             android:background="@drawable/trazoredondo_bg"
             android:padding="7dp"
             android:textColor="@color/color_texto"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:fontFamily="@font/fuente_light"/>
     </androidx.appcompat.widget.Toolbar>
 
 
