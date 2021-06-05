@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
@@ -20,7 +19,7 @@ public class ConfigActivity extends AppCompatActivity {
 
     CheckBox mCheckBox;
     boolean estadoAviso = false;
-    TextView aviso;
+    public TextView aviso, notis, app;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -32,6 +31,8 @@ public class ConfigActivity extends AppCompatActivity {
 
         TextView califica = findViewById(R.id.Calificar);
         mCheckBox = findViewById(R.id.checkBox);
+        app = findViewById(R.id.AppConfig);
+        notis = findViewById(R.id.Notification);
 
         califica.setOnClickListener(v -> {
              {
@@ -48,11 +49,7 @@ public class ConfigActivity extends AppCompatActivity {
             estadoAviso = true;
         });
 
-        TextView notis = findViewById(R.id.Notification);
-
         notis.setOnClickListener(v -> startActivity(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)));
-        
-        TextView app = findViewById(R.id.AppConfig);
 
         app.setOnClickListener(v -> startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)));
 
