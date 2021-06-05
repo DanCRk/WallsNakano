@@ -8,11 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.VistaWallpaper;
@@ -47,6 +47,8 @@ public class WallpaperAdapterWppsCateg extends RecyclerView.Adapter<WallpaperAda
     public void onBindViewHolder(@NonNull @NotNull WallpaperHolder holder, int position) {
         Wallpaper wallpaper = lista.get(position);
         Glide.with(activity).load(wallpaper.getUrl()).into(holder.wallpView);
+        holder.animCarga.loop(false);
+        holder.animCarga.setVisibility(View.GONE);
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), VistaWallpaper.class);
             intent.putExtra("ItemUrl", wallpaper.getUrl());
@@ -63,14 +65,13 @@ public class WallpaperAdapterWppsCateg extends RecyclerView.Adapter<WallpaperAda
 
 
     public static class WallpaperHolder extends RecyclerView.ViewHolder {
-        ImageView wallpView, catView;
-        TextView nombreCat;
+        ImageView wallpView;
+        LottieAnimationView animCarga;
 
         public WallpaperHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             wallpView = itemView.findViewById(R.id.item_url);
-            catView = itemView.findViewById(R.id.item_url_cat);
-            nombreCat = itemView.findViewById(R.id.titulo_cat);
+            animCarga = itemView.findViewById(R.id.animacion_view_wpp);
         }
     }
 }
