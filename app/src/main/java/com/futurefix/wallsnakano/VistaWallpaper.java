@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.io.IOException;
 
@@ -32,6 +34,7 @@ public class VistaWallpaper extends AppCompatActivity {
     ImageButton setwpp, descarga;
     boolean ampliado=false;
     boolean estadoactual;
+    AdView banner;
     LottieAnimationView animCarga;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -52,6 +55,11 @@ public class VistaWallpaper extends AppCompatActivity {
         setwpp = findViewById(R.id.buttonsetwpp);
         descarga = findViewById(R.id.buttondescarga);
         animCarga = findViewById(R.id.animacion_view);
+        banner = findViewById(R.id.adViewBannerVista);
+
+        //Anuncios
+        AdRequest adRequest = new AdRequest.Builder().build();
+        banner.loadAd(adRequest);
 
         final Intent intent = getIntent();
         url = Uri.parse(intent.getStringExtra("ItemUrl"));
@@ -66,6 +74,7 @@ public class VistaWallpaper extends AppCompatActivity {
         img_ampliada.setOnClickListener(v -> {
             if (ampliado){
                 img_ampliada.setVisibility(View.GONE);
+                banner.setVisibility(View.VISIBLE);
                 ampliado = !ampliado;
             }
         });
@@ -73,6 +82,7 @@ public class VistaWallpaper extends AppCompatActivity {
         img.setOnClickListener(v -> {
             if (!ampliado){
                 img_ampliada.setVisibility(View.VISIBLE);
+                banner.setVisibility(View.GONE);
                 ampliado = !ampliado;
             }
         });
