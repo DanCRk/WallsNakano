@@ -10,16 +10,6 @@
     android:orientation="vertical"
     tools:ignore="ContentDescription">
 
-    <ImageView
-        android:id="@+id/cargando"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/splash"/>
-
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="8dp"
         android:elevation="10dp"
@@ -31,7 +21,6 @@
             android:id="@+id/item_url"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/splash"
             android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
 

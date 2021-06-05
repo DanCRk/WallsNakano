@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapterWppsCateg;
-import com.futurefix.wallsnakano.listas.WallpaperServiceWallpapersCategorias;
+import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -57,14 +57,14 @@ public class CategoriasWpps extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        WallpaperServiceWallpapersCategorias.clearList();
+        WallpaperService.clearList();
         finish();
         cuantos.setVisibility(View.GONE);
     }
 
     public void cargarLista() {
         rc.setLayoutManager(new GridLayoutManager(this, 3));
-        WallpaperAdapterWppsCateg adapter = new WallpaperAdapterWppsCateg(WallpaperServiceWallpapersCategorias.WallpaperCat, R.layout.item_wallpaper, this, this);
+        WallpaperAdapterWppsCateg adapter = new WallpaperAdapterWppsCateg(WallpaperService.WallpaperCat, R.layout.item_wallpaper, this, this);
         rc.setAdapter(adapter);
     }
 
@@ -79,10 +79,10 @@ public class CategoriasWpps extends AppCompatActivity {
                     Wallpaper wallpaper = snapshot.getValue(Wallpaper.class);
                     assert wallpaper != null;
                     wallpaper.setId(snapshot.getKey());
-                    if (!WallpaperServiceWallpapersCategorias.WallpaperCat.contains(wallpaper)){
-                        WallpaperServiceWallpapersCategorias.addWallpaper(wallpaper);
+                    if (!WallpaperService.WallpaperCat.contains(wallpaper)){
+                        WallpaperService.addWallpaperWallpaperCat(wallpaper);
                     }
-                    String cuantoswpps = String.valueOf(WallpaperServiceWallpapersCategorias.cuantosList());
+                    String cuantoswpps = String.valueOf(WallpaperService.cuantosList());
                     cuantos.setText(String.format("%s Wallpapers", cuantoswpps));
                     cuantos.setVisibility(View.VISIBLE);
                     Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();

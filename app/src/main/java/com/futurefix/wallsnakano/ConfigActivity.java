@@ -10,16 +10,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-public class ConfigActivity extends AppCompatActivity {
+public class ConfigActivity extends AppCompatActivity{
 
     CheckBox mCheckBox;
     boolean estadoAviso = false;
-    public TextView aviso, notis, app;
+    TextView aviso, notis, app, toolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -33,6 +31,9 @@ public class ConfigActivity extends AppCompatActivity {
         mCheckBox = findViewById(R.id.checkBox);
         app = findViewById(R.id.AppConfig);
         notis = findViewById(R.id.Notification);
+        toolbar = findViewById(R.id.texto_toolbar);
+
+        toolbar.setText(R.string.configuraciones);
 
         califica.setOnClickListener(v -> {
              {
@@ -52,16 +53,6 @@ public class ConfigActivity extends AppCompatActivity {
         notis.setOnClickListener(v -> startActivity(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)));
 
         app.setOnClickListener(v -> startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)));
-
-        // Apartado de Columnas
-
-        Spinner spinner = findViewById(R.id.spinner_columnas);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.columnas_array, android.R.layout.simple_spinner_item);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinner.setAdapter(adapter);
     }
 
     @Override
@@ -98,6 +89,4 @@ public class ConfigActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean("check", false);
     }
-
-
 }

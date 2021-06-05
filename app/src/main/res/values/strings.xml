@@ -87,7 +87,11 @@
  Puedo actualizar nuestra Política de privacidad de vez en cuando.  Por lo tanto, le recomendamos que revise esta página periódicamente para ver si hay cambios.  Le notificaré cualquier cambio publicando la nueva Política de privacidad en esta página.  Estos cambios entran en vigencia inmediatamente después de su publicación en esta página.
 
  Contá</string>
-    <string name="RyuTec">ryutec</string>
+    <string name="RyuTec">RyuTec</string>
     <string name="nunca_wallpaper_scrollable">Nunca wallpaper scrollable</string>
+    <string name="columnas_">Columnas: </string>
+    <string name="configuraciones">Configuraciones</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="ajustes">Ajustes</string>
 
 </resources>

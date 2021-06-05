@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapter;
-import com.futurefix.wallsnakano.listas.WallpaperServiceItsuki;
+import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -50,7 +50,7 @@ public class ItsukiFragment extends Fragment {
 
     public void cargarLista() {
         rc.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperServiceItsuki.wallpaperItsuki, R.layout.item_wallpaper, getParentFragment(), getContext(),21);
+        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperService.wallpaperItsuki, R.layout.item_wallpaper, getParentFragment(), getContext(),21);
         rc.setAdapter(adapter);
     }
 
@@ -65,8 +65,8 @@ public class ItsukiFragment extends Fragment {
                     Wallpaper wallpaper = snapshot.getValue(Wallpaper.class);
                     assert wallpaper != null;
                     wallpaper.setId(snapshot.getKey());
-                    if (!WallpaperServiceItsuki.wallpaperItsuki.contains(wallpaper)){
-                        WallpaperServiceItsuki.addWallpaper(wallpaper);
+                    if (!WallpaperService.wallpaperItsuki.contains(wallpaper)){
+                        WallpaperService.addWallpaperItsuki(wallpaper);
                     }
                     Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
                 }catch (Exception e){

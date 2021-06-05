@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="HardcodedText"
     tools:showIn="navigation_view">
@@ -53,11 +52,6 @@
             android:id="@+id/info_menu"
             android:title="Acerca de"
             android:icon="@drawable/ic_info"/>
-        <item
-            android:id="@+id/modo_oscuro_menu"
-            android:title="Modo Oscuro"
-            app:actionLayout="@layout/switch_item"
-            android:icon="@drawable/ic_luna"/>
     </group>
 
 

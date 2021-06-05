@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapter;
-import com.futurefix.wallsnakano.listas.WallpaperServiceMiku;
+import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -50,7 +50,7 @@ public class MikuFragment extends Fragment {
 
     public void cargarLista() {
         rc.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperServiceMiku.wallpaperMiku, R.layout.item_wallpaper, getParentFragment(), getContext(),21);
+        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperService.wallpaperMiku, R.layout.item_wallpaper, getParentFragment(), getContext(),21);
         rc.setAdapter(adapter);
     }
 
@@ -65,8 +65,8 @@ public class MikuFragment extends Fragment {
                     Wallpaper wallpaper = snapshot.getValue(Wallpaper.class);
                     assert wallpaper != null;
                     wallpaper.setId(snapshot.getKey());
-                    if (!WallpaperServiceMiku.wallpaperMiku.contains(wallpaper)){
-                        WallpaperServiceMiku.addWallpaper(wallpaper);
+                    if (!WallpaperService.wallpaperMiku.contains(wallpaper)){
+                        WallpaperService.addWallpaperMiku(wallpaper);
                     }
                     Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
                 }catch (Exception e){

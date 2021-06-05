@@ -48,6 +48,12 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!EsCon(SplashActivity.this)) builderDialog(SplashActivity.this).show();
+    }
+
     public Boolean EsCon(Context context){
 
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -79,9 +85,9 @@ public class SplashActivity extends AppCompatActivity {
 
         builder.setTitle("Sin Conexion a Internet");
         builder.setMessage("Esta aplicacion requiere de conexion a internet estable para cargar el contenido");
-
-        builder.setPositiveButton("ok", (dialog, which) -> finish());
-        builder.setNegativeButton("Ajustes", (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)));
+        builder.setCancelable(false);
+        builder.setPositiveButton(R.string.cerrar, (dialog, which) -> finish());
+        builder.setNegativeButton(R.string.ajustes, (dialog, which) -> startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)));
         return builder;
     }
 }

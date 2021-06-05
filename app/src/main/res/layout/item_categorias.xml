@@ -9,17 +9,6 @@
     android:paddingBottom="35dp"
     tools:ignore="ContentDescription">
 
-    <ImageView
-        android:id="@+id/cargando_cat"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="26dp"
-        android:src="@drawable/splash"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="160dp"
@@ -35,8 +24,7 @@
             android:id="@+id/item_url_cat"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/splash" />
+            android:scaleType="centerCrop"/>
 
     </androidx.cardview.widget.CardView>
 

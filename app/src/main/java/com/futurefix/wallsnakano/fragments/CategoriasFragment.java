@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapter;
-import com.futurefix.wallsnakano.listas.WallpaperServiceCategorias;
+import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -51,7 +51,7 @@ public class CategoriasFragment extends Fragment {
 
     public void cargarLista() {
         rc.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperServiceCategorias.Categorias, R.layout.item_categorias, getParentFragment(), getContext(), 22);
+        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperService.Categorias, R.layout.item_categorias, getParentFragment(), getContext(), 22);
         rc.setAdapter(adapter);
     }
 
@@ -65,8 +65,8 @@ public class CategoriasFragment extends Fragment {
                     Wallpaper wallpaper = snapshot.getValue(Wallpaper.class);
                     assert wallpaper != null;
                     wallpaper.setId(snapshot.getKey());
-                    if (!WallpaperServiceCategorias.Categorias.contains(wallpaper)) {
-                        WallpaperServiceCategorias.addWallpaper(wallpaper);
+                    if (!WallpaperService.Categorias.contains(wallpaper)) {
+                        WallpaperService.addWallpaperCategorias(wallpaper);
                     }
                     Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
                 } catch (Exception e) {

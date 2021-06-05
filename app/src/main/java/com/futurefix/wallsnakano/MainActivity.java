@@ -3,7 +3,6 @@ package com.futurefix.wallsnakano;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment newFragment = null;
     private String url;
     TextView textoToolbar;
-    SwitchCompat switchCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Referenciar las weas locas
         textoToolbar = findViewById(R.id.texto_toolbar);
-        switchCompat = findViewById(R.id.switch_modooscuro);
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
@@ -106,8 +103,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         drawerLayout.closeDrawer(GravityCompat.START);
-//        if (menuItem.getItemId() == R.id.upgrade_menu) {
-//        }
 //        if (menuItem.getItemId() == R.id.favoritos_menu) {
 //        }
 //        if (menuItem.getItemId() == R.id.perfil_menu) {
