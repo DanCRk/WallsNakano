@@ -2,12 +2,9 @@ package com.futurefix.wallsnakano;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.app.WallpaperManager;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -82,17 +79,6 @@ public class VistaWallpaper extends AppCompatActivity {
 
         setwpp.setOnClickListener(v -> cortarWallpaper(estadoactual));
 
-        descarga.setOnClickListener(v -> {
-            solicitarpermisos();
-            //convertir imagen
-            img.buildDrawingCache(true);
-            img.buildDrawingCache();
-            Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
-            //guardar imagen
-            Save savefile = new Save();
-            savefile.SaveImage(this, bitmap);
-        });
-
         cerrar.setOnClickListener(v -> finish());
     }
 
@@ -132,12 +118,12 @@ public class VistaWallpaper extends AppCompatActivity {
        }
     }
 
-    private  void  solicitarpermisos() {
-        int permisoguardar = ActivityCompat.checkSelfPermission(VistaWallpaper.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (permisoguardar != PackageManager.PERMISSION_GRANTED) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 111);
-            }
-        }
-    }
+//    private  void  solicitarpermisos() {
+//        int permisoguardar = ActivityCompat.checkSelfPermission(VistaWallpaper.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//        if (permisoguardar != PackageManager.PERMISSION_GRANTED) {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 111);
+//            }
+//        }
+//    }
 }

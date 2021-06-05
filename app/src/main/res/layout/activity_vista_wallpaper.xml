@@ -79,33 +79,57 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginBottom="45dp">
 
-                <ImageButton
-                    android:id="@+id/buttondescarga"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:background="@drawable/ic_descarga"
-                    android:visibility="visible"
-                    android:layout_marginTop="5dp"
-                    tools:visibility="visible" />
-
-                <ImageButton
-                    android:id="@+id/buttonsetwpp"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="25dp"
-                    android:background="@drawable/ic_wpp"
-                    android:visibility="visible"
-                    tools:visibility="visible" />
-
-                <ImageButton
-                    android:id="@+id/buttondesca"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/ic_descarga"
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_boton"
+                    android:layout_gravity="center_vertical"
                     android:visibility="invisible"
-                    tools:visibility="invisible" />
+                    tools:visibility="invisible">
+
+                        <ImageButton
+                            android:id="@+id/buttondescarga"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:src="@drawable/ic_descarga"
+                            android:background="@android:color/transparent"
+                            android:visibility="visible"
+                            android:layout_margin="8dp"
+                            android:scaleType="centerCrop"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="76dp"
+                    android:layout_height="76dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/bg_boton">
+                        <ImageButton
+                            android:id="@+id/buttonsetwpp"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="17dp"
+                            android:src="@drawable/ic_setwpp"
+                            android:scaleType="centerCrop"
+                            android:background="@android:color/transparent"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_boton"
+                    android:layout_gravity="center_vertical"
+                    android:visibility="invisible">
+                        <ImageButton
+                            android:id="@+id/buttondesca"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/bg_boton"
+                            android:visibility="invisible"
+                            tools:visibility="invisible" />
+                </LinearLayout>
         </LinearLayout>
 
         <ImageView

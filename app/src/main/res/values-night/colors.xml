@@ -15,7 +15,7 @@
     // Colores Secundarios Night
 <!--    <color name="secundario">#412649</color>-->
     <color name="secundario">#7E7E7E</color>
-    <color name="secundario_dark">#1c0022</color>
+    <color name="secundario_dark">#656565</color>
     <color name="secundario_claro">#6d4f75</color>
 
     // Colores para texto
