@@ -16,7 +16,7 @@
             android:scaleType="centerCrop"/>
 
         <ImageView
-            android:id="@+id/imagen_CARGAR"
+            android:id="@+id/imagen_sinCortes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="invisible"
@@ -45,6 +45,18 @@
             android:src="@drawable/ic_close"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animacion_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="anim_carga.json"
+            app:lottie_loop="true" />
 
         <ImageView
             android:id="@+id/imagen_vista"

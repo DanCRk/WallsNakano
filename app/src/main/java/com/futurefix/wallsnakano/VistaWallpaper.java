@@ -1,20 +1,25 @@
 package com.futurefix.wallsnakano;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.app.WallpaperManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -24,14 +29,15 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class VistaWallpaper extends AppCompatActivity {
 
-    ImageView img_fondo, img_ampliada,img,imgcargar;
+    ImageView img_fondo, img_ampliada,img,imgSincortes;
     ImageButton cerrar;
     Uri url;
     ImageButton setwpp, descarga;
-    CheckBox mCheckBox;
     boolean ampliado=false;
     boolean estadoactual;
+    LottieAnimationView animCarga;
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,20 +49,22 @@ public class VistaWallpaper extends AppCompatActivity {
 
         cerrar = findViewById(R.id.boton_cerrar_vista);
         img = findViewById(R.id.imagen_vista);
-        imgcargar = findViewById(R.id.imagen_CARGAR);
+        imgSincortes = findViewById(R.id.imagen_sinCortes);
         img_ampliada = findViewById(R.id.imagen_vista_ampliada);
         img_fondo = findViewById(R.id.imagen_vista_fondo);
         setwpp = findViewById(R.id.buttonsetwpp);
         descarga = findViewById(R.id.buttondescarga);
-        mCheckBox = findViewById(R.id.checkBox);
+        animCarga = findViewById(R.id.animacion_view);
 
         final Intent intent = getIntent();
         url = Uri.parse(intent.getStringExtra("ItemUrl"));
 
-        Glide.with(this).load(url).into(img);
-        Glide.with(this).load(url).into(imgcargar);
         Glide.with(this).load(url).apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3))).into(img_fondo);
+        Glide.with(this).load(url).into(img);
+        Glide.with(this).load(url).into(imgSincortes);
         Glide.with(this).load(url).into(img_ampliada);
+
+        animCarga.loop(false);
 
         img_ampliada.setOnClickListener(v -> {
             if (ampliado){
@@ -75,20 +83,24 @@ public class VistaWallpaper extends AppCompatActivity {
         setwpp.setOnClickListener(v -> cortarWallpaper(estadoactual));
 
         descarga.setOnClickListener(v -> {
-
+            solicitarpermisos();
+            //convertir imagen
+            img.buildDrawingCache(true);
+            img.buildDrawingCache();
+            Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
+            //guardar imagen
+            Save savefile = new Save();
+            savefile.SaveImage(this, bitmap);
         });
 
         cerrar.setOnClickListener(v -> finish());
-
-
-
     }
 
     public void cortarWallpaper (Boolean bol){
         if (!bol){
             try {
                 WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
-                BitmapDrawable drawable = (BitmapDrawable) imgcargar.getDrawable();
+                BitmapDrawable drawable = (BitmapDrawable) imgSincortes.getDrawable();
                 Bitmap bit = drawable.getBitmap();  // error java.lang.NullPointerException
                 wallpaperManager.setBitmap(bit);
                 Toast.makeText(VistaWallpaper.this, "Listo!", Toast.LENGTH_SHORT).show();
@@ -120,12 +132,12 @@ public class VistaWallpaper extends AppCompatActivity {
        }
     }
 
-//    private  void  solicitarpermisos() {
-//        int permisoguardar = ActivityCompat.checkSelfPermission(VistaWallpaper.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//        if (permisoguardar != PackageManager.PERMISSION_GRANTED) {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 111);
-//            }
-//        }
-//    }
+    private  void  solicitarpermisos() {
+        int permisoguardar = ActivityCompat.checkSelfPermission(VistaWallpaper.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permisoguardar != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 111);
+            }
+        }
+    }
 }

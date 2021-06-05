@@ -22,6 +22,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animacion_view_wpp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="anim_carga.json"
+            app:lottie_loop="true" />
+
     </androidx.cardview.widget.CardView>
 
 

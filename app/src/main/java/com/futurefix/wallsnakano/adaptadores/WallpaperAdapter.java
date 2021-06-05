@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.futurefix.wallsnakano.CategoriasWpps;
 import com.futurefix.wallsnakano.R;
@@ -65,6 +66,8 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
             });
         }else if (codigo==CODE_WALLPAPER){
             Glide.with(fragment).load(wallpaper.getUrl()).into(holder.wallpView);
+            holder.animCarga.loop(false);
+            holder.animCarga.setVisibility(View.GONE);
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(v.getContext(), VistaWallpaper.class);
                 intent.putExtra("ItemUrl", wallpaper.getUrl());
@@ -84,10 +87,12 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
     public static class WallpaperHolder extends RecyclerView.ViewHolder {
         ImageView wallpView, catView;
         TextView nombreCat;
+        LottieAnimationView animCarga;
 
         public WallpaperHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             wallpView = itemView.findViewById(R.id.item_url);
+            animCarga = itemView.findViewById(R.id.animacion_view_wpp);
             catView = itemView.findViewById(R.id.item_url_cat);
             nombreCat = itemView.findViewById(R.id.titulo_cat);
         }
