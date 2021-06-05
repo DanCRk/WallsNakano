@@ -11,8 +11,9 @@ import android.view.ViewGroup;
 
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.adaptadores.PagerAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.tabs.TabLayout;
-
 
 public class MainFragment extends Fragment {
 
@@ -20,17 +21,23 @@ public class MainFragment extends Fragment {
     ViewPager viewPager;
     PagerAdapter pagerAdapter;
 
+    AdView banner;
+
     public MainFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.viewPager);
+        banner = view.findViewById(R.id.adViewBannerTabs);
+
+        //Anuncios
+        AdRequest adRequest = new AdRequest.Builder().build();
+        banner.loadAd(adRequest);
 
         pagerAdapter =new PagerAdapter(getChildFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);

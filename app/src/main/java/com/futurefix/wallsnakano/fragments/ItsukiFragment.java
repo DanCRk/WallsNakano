@@ -45,6 +45,7 @@ public class ItsukiFragment extends Fragment {
         cargarLista();
         // Cargar Datos
         cargarDatos();
+
         return view;
     }
 
@@ -82,5 +83,7 @@ public class ItsukiFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) { }
         });
+        WallpaperService.invertirItsuki();
+        Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
     }
 }

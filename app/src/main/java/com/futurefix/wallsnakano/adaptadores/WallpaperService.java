@@ -3,6 +3,7 @@ package com.futurefix.wallsnakano.adaptadores;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class WallpaperService {
@@ -16,15 +17,22 @@ public class WallpaperService {
     public static List<Wallpaper> Categorias = new ArrayList<>();
     public static List<Wallpaper> WallpaperCat = new ArrayList<>();
 
-    public static void addWallpaperCategorias(Wallpaper wallpaper){
-        Categorias.add(wallpaper);}
+    public static void addWallpaperCategorias(Wallpaper wallpaper){ Categorias.add(wallpaper);}
 
-    public static void addWallpaperItsuki(Wallpaper wallpaper){ wallpaperItsuki.add(wallpaper); }
+    public static void addWallpaperItsuki(Wallpaper wallpaper){
+        wallpaperItsuki.add(wallpaper);
+    }
+
+    public static void invertirItsuki(){
+        Collections.reverse(wallpaperItsuki);
+    }
 
     public static void addWallpaperNino(Wallpaper wallpaper){ wallpaperNino.add(wallpaper); }
 
     public static void addWallpaperMiku(Wallpaper wallpaper){ wallpaperMiku.add(wallpaper); }
+
     public static void addWallpaperYotsuba(Wallpaper wallpaper){ wallpaperYotsuba.add(wallpaper); }
+
     public static void addWallpaperIchika(Wallpaper wallpaper){ wallpaperIchika.add(wallpaper); }
 
     public static void addWallpaperWallpaperCat(Wallpaper wallpaper){ WallpaperCat.add(wallpaper);}

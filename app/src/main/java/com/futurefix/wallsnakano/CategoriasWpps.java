@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapterWppsCateg;
 import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +32,7 @@ public class CategoriasWpps extends AppCompatActivity {
 
     RecyclerView rc;
     TextView tv, cuantos;
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,13 @@ public class CategoriasWpps extends AppCompatActivity {
         rc = findViewById(R.id.recyclerViewWallpaperCategorias);
         tv = findViewById(R.id.texto_toolbar);
         cuantos = findViewById(R.id.cuantoswpps);
+        adView = findViewById(R.id.adViewBannerCategorias);
 
+        // Anuncios
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        // Cambiar el nombre al toolbar por la categoria actual
         tv.setText(nombre);
 
         // Cargar Lista

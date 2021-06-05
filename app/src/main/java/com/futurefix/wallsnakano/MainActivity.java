@@ -19,7 +19,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.futurefix.wallsnakano.fragments.MainFragment;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.navigation.NavigationView;
+
+import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -35,6 +40,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Inicializar los anuncios
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NotNull InitializationStatus initializationStatus) {
+            }
+        });
 
         url= "https://play.google.com/store/apps/details?id=com.futurefix.wallsnakano";
 

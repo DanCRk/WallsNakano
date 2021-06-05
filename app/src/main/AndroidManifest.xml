@@ -17,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WallsNakano"
         tools:ignore="AllowBackup">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2030839089746380~9956071757"/>
+
         <activity android:name=".AcercaActivity" />
         <activity android:name=".ConfigActivity" />
         <activity android:name=".CategoriasWpps" />

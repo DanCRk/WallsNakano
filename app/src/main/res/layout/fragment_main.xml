@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,14 +10,18 @@
     android:configChanges="colorMode">
 
     <FrameLayout
+        android:id="@+id/contenedorTab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="38dp"
+        android:layout_marginEnd="5dp"
         android:clipToPadding="false"
         android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp">
+        android:paddingBottom="20dp">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
@@ -72,9 +76,19 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/adViewBannerTabs"
+        android:layout_below="@+id/contenedorTab"/>
 
-    </androidx.viewpager.widget.ViewPager>
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewBannerTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-2030839089746380/9708659745"/>
 
-</LinearLayout>
+</RelativeLayout>
