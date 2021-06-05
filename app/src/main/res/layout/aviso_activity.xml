@@ -17,7 +17,8 @@
             android:layout_marginEnd="10dp"
             android:text="@string/muchotexto"
             android:textColor="@color/color_texto"
-            android:fontFamily="@font/fuente_medium"/>
+            android:fontFamily="@font/fuente_medium"
+            android:textSize="16sp"/>
 
     </ScrollView>
 
