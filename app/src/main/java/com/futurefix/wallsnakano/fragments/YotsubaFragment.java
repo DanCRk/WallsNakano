@@ -44,7 +44,11 @@ public class YotsubaFragment extends Fragment {
         // Cargar Lista
         cargarLista();
         // Cargar Datos
-        cargarDatos();
+        cargarDatos("nombre");
+        cargarDatos("tag1");
+        cargarDatos("tag2");
+        cargarDatos("tag3");
+        cargarDatos("tag4");
         return view;
     }
 
@@ -54,10 +58,10 @@ public class YotsubaFragment extends Fragment {
         rc.setAdapter(adapter);
     }
 
-    public void cargarDatos() {
+    public void cargarDatos(String queTag) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Wallpapers");
-        Query query = reference.orderByChild("nombre").equalTo("yotsuba");
+        Query query = reference.orderByChild(queTag).equalTo("yotsuba");
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {

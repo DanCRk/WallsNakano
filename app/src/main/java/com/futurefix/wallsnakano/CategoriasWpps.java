@@ -92,7 +92,12 @@ public class CategoriasWpps extends AppCompatActivity {
                         WallpaperService.addWallpaperWallpaperCat(wallpaper);
                     }
                     String cuantoswpps = String.valueOf(WallpaperService.cuantosList());
-                    cuantos.setText(String.format("%s Wallpapers", cuantoswpps));
+                    int cuanto = WallpaperService.cuantosList();
+                    if (cuanto == 1){
+                        cuantos.setText(String.format("%s Wallpaper", cuantoswpps));
+                    }else {
+                        cuantos.setText(String.format("%s Wallpapers", cuantoswpps));
+                    }
                     cuantos.setVisibility(View.VISIBLE);
                     Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
                 }catch (Exception e){

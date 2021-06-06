@@ -122,6 +122,7 @@ public class VistaWallpaper extends AppCompatActivity {
     public void onBackPressed() {
        if (ampliado){
            img_ampliada.setVisibility(View.GONE);
+           banner.setVisibility(View.VISIBLE);
            ampliado = !ampliado;
        }else{
            finish();
