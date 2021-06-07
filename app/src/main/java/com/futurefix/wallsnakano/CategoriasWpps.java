@@ -58,6 +58,9 @@ public class CategoriasWpps extends AppCompatActivity {
         // Cargar Lista
         cargarLista();
         // Cargar Datos
+        if (nombre.equals("Quints")){
+            cargarDatos("quints", "nombre");
+        }
         cargarDatos(tag, "tag1");
         cargarDatos(tag, "tag2");
         cargarDatos(tag, "tag3");
