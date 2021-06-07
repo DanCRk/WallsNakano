@@ -50,9 +50,24 @@ public class ConfigActivity extends AppCompatActivity{
             estadoAviso = true;
         });
 
-        notis.setOnClickListener(v -> startActivity(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)));
+        notis.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+            } else {
+                intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+                intent.putExtra("app_package", getPackageName());
+                intent.putExtra("app_uid", getApplicationInfo().uid);
+            }
+            startActivity(intent);
+        });
 
-        app.setOnClickListener(v -> startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)));
+        app.setOnClickListener(v -> {
+            Intent intente = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            intente.setData(Uri.parse("package:" + getPackageName()));
+            startActivity(intente);
+        });
     }
 
     @Override
