@@ -58,7 +58,10 @@ public class CategoriasWpps extends AppCompatActivity {
         // Cargar Lista
         cargarLista();
         // Cargar Datos
-        if (nombre.equals("Quints")){
+        if (nombre.equals("Todos")){
+            cargarTodosDatos();
+        }
+        else if (nombre.equals("Quints")){
             cargarDatos("quints", "nombre");
         }
         cargarDatos(tag, "tag1");
@@ -115,6 +118,52 @@ public class CategoriasWpps extends AppCompatActivity {
             public void onChildMoved(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) { }
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) { }
+        });
+    }
+
+    public void cargarTodosDatos() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("Wallpapers");
+        reference.getRef();
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+                Wallpaper wallpaper = snapshot.getValue(Wallpaper.class);
+                assert wallpaper != null;
+                wallpaper.setId(snapshot.getKey());
+                if (!WallpaperService.WallpaperCat.contains(wallpaper)){
+                    WallpaperService.addWallpaperWallpaperCat(wallpaper);
+                }
+                String cuantoswpps = String.valueOf(WallpaperService.cuantosList());
+                int cuanto = WallpaperService.cuantosList();
+                if (cuanto == 1){
+                    cuantos.setText(String.format("%s Wallpaper", cuantoswpps));
+                }else {
+                    cuantos.setText(String.format("%s Wallpapers", cuantoswpps));
+                }
+                cuantos.setVisibility(View.VISIBLE);
+                Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull @NotNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
         });
     }
 }
