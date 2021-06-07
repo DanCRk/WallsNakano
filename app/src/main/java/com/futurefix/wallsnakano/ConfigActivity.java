@@ -76,7 +76,7 @@ public class ConfigActivity extends AppCompatActivity{
             setContentView(R.layout.activity_config);
             estadoAviso = !estadoAviso;
         }else {
-            Estado.guardarEstado(mCheckBox.isChecked());
+            Estado.guardarEstadoCheckBox(mCheckBox.isChecked());
             finish();
         }
     }
@@ -91,7 +91,7 @@ public class ConfigActivity extends AppCompatActivity{
     public void onResume() {
         super.onResume();
         mCheckBox.setChecked(load());
-        Estado.guardarEstado(mCheckBox.isChecked());
+        Estado.guardarEstadoCheckBox(mCheckBox.isChecked());
     }
 
     private void save(final boolean isChecked) {

@@ -73,8 +73,9 @@ public class CategoriasWpps extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         WallpaperService.clearList();
-        finish();
         cuantos.setVisibility(View.GONE);
+        Estado.iteradorAnuncios ++;
+        finish();
     }
 
     public void cargarLista() {

@@ -2,13 +2,14 @@ package com.futurefix.wallsnakano;
 
 public class Estado {
 
-    public static Boolean estadoactual;
+    public static Boolean estadoactualCheckBox;
+    public static int iteradorAnuncios=1;
 
     public Estado() {
     }
 
-    public static void guardarEstado (boolean bol){
-        estadoactual = bol;
+    public static void guardarEstadoCheckBox(boolean bol){
+        estadoactualCheckBox = bol;
     }
 
 }

@@ -15,16 +15,17 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.futurefix.wallsnakano.fragments.MainFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.navigation.NavigationView;
-
-import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment newFragment = null;
     private String url;
     TextView textoToolbar;
+    private InterstitialAd mInterstitial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         // Inicializar los anuncios
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(@NotNull InitializationStatus initializationStatus) {
-            }
+        MobileAds.initialize(this, initializationStatus -> {
         });
+
+        // Add intestical
+
+        cargarAdd();
 
         url= "https://play.google.com/store/apps/details?id=com.futurefix.wallsnakano";
 
@@ -84,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Para que la mmda no se cargue dos veces :)
         comprobar(currentFragment);
 
-        Estado.guardarEstado(load());
+        Estado.guardarEstadoCheckBox(load());
     }
 
     private void comprobar(Fragment currentFragment){
@@ -143,11 +146,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
+    public  void cargarAdd(){
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        InterstitialAd.load(this,"ca-app-pub-2030839089746380/7557193024", adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                mInterstitial = interstitialAd;
+                Log.i("nocarga", "onAdLoaded");
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                Log.i("algo", loadAdError.getMessage());
+                mInterstitial = null;
+            }
+        });
+    }
+
     @Override
     public void onResume() {
         super.onResume();
-        save(Estado.estadoactual);
-        Estado.guardarEstado(load());
+        save(Estado.estadoactualCheckBox);
+        if (Estado.iteradorAnuncios==4){
+            if (mInterstitial!= null) {
+                mInterstitial.show(this);
+                cargarAdd();
+            } else {
+                Log.d("TAG", "The interstitial ad wasn't ready yet.");
+            }
+            Estado.iteradorAnuncios=1;
+        }
+        Estado.guardarEstadoCheckBox(load());
     }
 
     private void save(boolean isChecked) {

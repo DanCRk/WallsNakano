@@ -4,7 +4,9 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.WallpaperManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -45,7 +47,7 @@ public class VistaWallpaper extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.activity_vista_wallpaper);
 
-        estadoactual = Estado.estadoactual;
+        estadoactual = Estado.estadoactualCheckBox;
 
         cerrar = findViewById(R.id.boton_cerrar_vista);
         img = findViewById(R.id.imagen_vista);
@@ -89,11 +91,15 @@ public class VistaWallpaper extends AppCompatActivity {
 
         setwpp.setOnClickListener(v -> cortarWallpaper(estadoactual));
 
-        cerrar.setOnClickListener(v -> finish());
+        cerrar.setOnClickListener(v -> {
+            Estado.iteradorAnuncios ++;
+            finish();
+        });
     }
 
     public void cortarWallpaper (Boolean bol){
         if (!bol){
+            Toast.makeText(VistaWallpaper.this, "Estableciendo...", Toast.LENGTH_SHORT).show();
             try {
                 WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
                 BitmapDrawable drawable = (BitmapDrawable) imgSincortes.getDrawable();
@@ -125,10 +131,10 @@ public class VistaWallpaper extends AppCompatActivity {
            banner.setVisibility(View.VISIBLE);
            ampliado = !ampliado;
        }else{
+           Estado.iteradorAnuncios ++;
            finish();
        }
     }
-
 //    private  void  solicitarpermisos() {
 //        int permisoguardar = ActivityCompat.checkSelfPermission(VistaWallpaper.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 //        if (permisoguardar != PackageManager.PERMISSION_GRANTED) {
