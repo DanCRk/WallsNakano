@@ -4,9 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.WallpaperManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -35,7 +33,6 @@ public class VistaWallpaper extends AppCompatActivity {
     Uri url;
     ImageButton setwpp, descarga;
     boolean ampliado=false;
-    boolean estadoactual;
     AdView banner;
     LottieAnimationView animCarga;
 
@@ -46,8 +43,6 @@ public class VistaWallpaper extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.activity_vista_wallpaper);
-
-        estadoactual = Estado.estadoactualCheckBox;
 
         cerrar = findViewById(R.id.boton_cerrar_vista);
         img = findViewById(R.id.imagen_vista);
@@ -89,7 +84,7 @@ public class VistaWallpaper extends AppCompatActivity {
             }
         });
 
-        setwpp.setOnClickListener(v -> cortarWallpaper(estadoactual));
+        setwpp.setOnClickListener(v -> cortarWallpaper());
 
         cerrar.setOnClickListener(v -> {
             Estado.iteradorAnuncios ++;
@@ -97,8 +92,8 @@ public class VistaWallpaper extends AppCompatActivity {
         });
     }
 
-    public void cortarWallpaper (Boolean bol){
-        if (!bol){
+    public void cortarWallpaper (){
+        if (!Estado.estadoactualCheckBox){
             Toast.makeText(VistaWallpaper.this, "Estableciendo...", Toast.LENGTH_SHORT).show();
             try {
                 WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
