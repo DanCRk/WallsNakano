@@ -87,13 +87,13 @@ public class VistaWallpaper extends AppCompatActivity {
         setwpp.setOnClickListener(v -> cortarWallpaper());
 
         cerrar.setOnClickListener(v -> {
-            Estado.iteradorAnuncios ++;
+            Auxiliar.iteradorAnuncios ++;
             finish();
         });
     }
 
     public void cortarWallpaper (){
-        if (!Estado.estadoactualCheckBox){
+        if (!Auxiliar.estadoactualCheckBox){
             Toast.makeText(VistaWallpaper.this, "Estableciendo...", Toast.LENGTH_SHORT).show();
             try {
                 WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
@@ -126,7 +126,7 @@ public class VistaWallpaper extends AppCompatActivity {
            banner.setVisibility(View.VISIBLE);
            ampliado = !ampliado;
        }else{
-           Estado.iteradorAnuncios ++;
+           Auxiliar.iteradorAnuncios ++;
            finish();
        }
     }

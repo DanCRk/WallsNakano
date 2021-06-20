@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,15 +14,6 @@ import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapter;
 import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
 
 public class ItsukiFragment extends Fragment {
@@ -44,12 +33,11 @@ public class ItsukiFragment extends Fragment {
         // Cargar Lista
         cargarLista();
         // Cargar Datos
-        cargarDatos("nombre");
-        cargarDatos("tag1");
-        cargarDatos("tag2");
-        cargarDatos("tag3");
-        cargarDatos("tag4");
-
+        cargarDatosPrincipales("itsuki");
+        cargarDatosSecundarios1("itsuki");
+        cargarDatosSecundarios2("itsuki");
+        cargarDatosSecundarios3("itsuki");
+        cargarDatosSecundarios4("itsuki");
         return view;
     }
 
@@ -59,33 +47,105 @@ public class ItsukiFragment extends Fragment {
         rc.setAdapter(adapter);
     }
 
-    public void cargarDatos(String queTag) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference("Wallpapers");
-        Query query = reference.orderByChild(queTag).equalTo("itsuki");
-        query.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
-                try {
-                    Wallpaper wallpaper = snapshot.getValue(Wallpaper.class);
-                    assert wallpaper != null;
-                    wallpaper.setId(snapshot.getKey());
-                    if (!WallpaperService.wallpaperItsuki.contains(wallpaper)){
-                        WallpaperService.addWallpaperItsuki(wallpaper);
+    public void cargarDatosPrincipales(String nombrePrincipal) {
+
+        // Recorremos la lista de wallpapers
+        for (Wallpaper wallpaper : WallpaperService.todosWallpapers){
+
+            // Comprobamos si el wallpaper tiene en alguna propiedad el nombre que se requiere
+            if (wallpaper.getNombre() != null) {
+                if (wallpaper.getNombre().equals(nombrePrincipal)) {
+                    // Se comprueba si el wallpaper existe ya en la lista, si no este es agregado
+                    try {
+                        if (!WallpaperService.wallpaperItsuki.contains(wallpaper)) {
+                            WallpaperService.addWallpaperItsuki(wallpaper);
+                        }
+                        Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
+                    } catch (Exception e) {
+                        Toast.makeText(getActivity(), "Error, no se pueden cargar los wallpapers", Toast.LENGTH_LONG).show();
                     }
-                    Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
-                }catch (Exception e){
-                    Toast.makeText(getActivity(), "Error, no se pueden cargar los wallpapers", Toast.LENGTH_LONG).show();
                 }
             }
-            @Override
-            public void onChildChanged(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) { }
-            @Override
-            public void onChildRemoved(@NonNull @NotNull DataSnapshot snapshot) { }
-            @Override
-            public void onChildMoved(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) { }
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) { }
-        });
+        }
+    }
+
+    public void cargarDatosSecundarios1(String nombrePrincipal){
+        // Recorremos la lista de wallpapers
+        for (Wallpaper wallpaper : WallpaperService.todosWallpapers){
+
+            // Comprobamos si el wallpaper tiene en alguna propiedad el nombre que se requiere
+            if (wallpaper.getTag1() != null){
+                if (wallpaper.getTag1().equals(nombrePrincipal)){
+                    try {
+                        if (!WallpaperService.wallpaperItsuki.contains(wallpaper)) {
+                            WallpaperService.addWallpaperItsuki(wallpaper);
+                        }
+                        Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), "Error, no se pueden cargar los wallpapers", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        }
+    }
+
+    public void cargarDatosSecundarios2 (String nombrePrincipal){
+        // Recorremos la lista de wallpapers
+        for (Wallpaper wallpaper : WallpaperService.todosWallpapers){
+
+            // Comprobamos si el wallpaper tiene en alguna propiedad el nombre que se requiere
+            if (wallpaper.getTag2()!= null){
+                if (wallpaper.getTag2().equals(nombrePrincipal)){
+                    try {
+                        if (!WallpaperService.wallpaperItsuki.contains(wallpaper)) {
+                            WallpaperService.addWallpaperItsuki(wallpaper);
+                        }
+                        Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), "Error, no se pueden cargar los wallpapers", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        }
+    }
+
+    public void cargarDatosSecundarios3 (String nombrePrincipal){
+        // Recorremos la lista de wallpapers
+        for (Wallpaper wallpaper : WallpaperService.todosWallpapers){
+
+            // Comprobamos si el wallpaper tiene en alguna propiedad el nombre que se requiere
+            if (wallpaper.getTag3()!= null){
+                if (wallpaper.getTag3().equals(nombrePrincipal)){
+                    try {
+                        if (!WallpaperService.wallpaperItsuki.contains(wallpaper)) {
+                            WallpaperService.addWallpaperItsuki(wallpaper);
+                        }
+                        Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), "Error, no se pueden cargar los wallpapers", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        }
+    }
+
+    public void cargarDatosSecundarios4 (String nombrePrincipal){
+        // Recorremos la lista de wallpapers
+        for (Wallpaper wallpaper : WallpaperService.todosWallpapers){
+
+            // Comprobamos si el wallpaper tiene en alguna propiedad el nombre que se requiere
+            if (wallpaper.getTag4()!= null){
+                if (wallpaper.getTag4().equals(nombrePrincipal)){
+                    try {
+                        if (!WallpaperService.wallpaperItsuki.contains(wallpaper)) {
+                            WallpaperService.addWallpaperItsuki(wallpaper);
+                        }
+                        Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), "Error, no se pueden cargar los wallpapers", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        }
     }
 }

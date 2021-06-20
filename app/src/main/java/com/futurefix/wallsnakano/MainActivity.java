@@ -1,6 +1,7 @@
 package com.futurefix.wallsnakano;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -19,13 +20,22 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.futurefix.wallsnakano.fragments.MainFragment;
+import com.futurefix.wallsnakano.modelos.Wallpaper;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -59,6 +69,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
 
+        // Solicitar los datos de todos los wallpapers
+
+        cargarTodosDatos();
+
         // Icono para el menu lateral
 
         Drawable icono = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_barrasmenu, this.getTheme());
@@ -87,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Para que la mmda no se cargue dos veces :)
         comprobar(currentFragment);
 
-        Estado.guardarEstadoCheckBox(load());
+        Auxiliar.guardarEstadoCheckBox(load());
     }
 
     private void comprobar(Fragment currentFragment){
@@ -146,7 +160,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
-    public  void cargarAdd(){
+    public void cargarTodosDatos() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("Wallpapers");
+        reference.getRef();
+        reference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+                Wallpaper wallpaper = snapshot.getValue(Wallpaper.class);
+                assert wallpaper != null;
+                wallpaper.setId(snapshot.getKey());
+                if (!WallpaperService.todosWallpapers.contains(wallpaper)){
+                    WallpaperService.addWallpaperTodos(wallpaper);
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull @NotNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void cargarAdd(){
         AdRequest adRequest = new AdRequest.Builder().build();
 
         InterstitialAd.load(this,"ca-app-pub-2030839089746380/7557193024", adRequest, new InterstitialAdLoadCallback() {
@@ -170,17 +221,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onResume() {
         super.onResume();
-        save(Estado.estadoactualCheckBox);
-        if (Estado.iteradorAnuncios==4){
+        save(Auxiliar.estadoactualCheckBox);
+        if (Auxiliar.iteradorAnuncios==4){
             if (mInterstitial!= null) {
                 mInterstitial.show(this);
                 cargarAdd();
             } else {
                 Log.d("TAG", "The interstitial ad wasn't ready yet.");
             }
-            Estado.iteradorAnuncios=1;
+            Auxiliar.iteradorAnuncios=1;
         }
-        Estado.guardarEstadoCheckBox(load());
+        Auxiliar.guardarEstadoCheckBox(load());
     }
 
     private void save(boolean isChecked) {
