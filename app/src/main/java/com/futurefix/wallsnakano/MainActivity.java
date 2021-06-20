@@ -47,11 +47,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String url;
     TextView textoToolbar;
     private InterstitialAd mInterstitial;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferences = getPreferences(Context.MODE_PRIVATE);
 
         // Inicializar los anuncios
         MobileAds.initialize(this, initializationStatus -> {
@@ -102,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         comprobar(currentFragment);
 
         Auxiliar.guardarEstadoCheckBox(load());
+        Auxiliar.guardarEstadoelectorColumnas(load2());
     }
 
     private void comprobar(Fragment currentFragment){
@@ -222,6 +226,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onResume() {
         super.onResume();
         save(Auxiliar.estadoactualCheckBox);
+        saveColumnas(Auxiliar.estadoSelectorColumnas);
         if (Auxiliar.iteradorAnuncios==4){
             if (mInterstitial!= null) {
                 mInterstitial.show(this);
@@ -232,16 +237,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Auxiliar.iteradorAnuncios=1;
         }
         Auxiliar.guardarEstadoCheckBox(load());
+        Auxiliar.guardarEstadoelectorColumnas(load2());
     }
 
     private void save(boolean isChecked) {
-        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("check", isChecked); editor.apply();
+        editor.putBoolean("check", isChecked);
+        editor.apply();
+    }
+
+    private void saveColumnas(int columnas){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("columnas", columnas);
+        editor.apply();
     }
 
     private boolean load() {
         SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean("check", false);
+    }
+
+    private int load2() {
+        SharedPreferences sharedPreferences2 = getPreferences(Context.MODE_PRIVATE);
+        return sharedPreferences2.getInt("columnas", 2);
     }
 }

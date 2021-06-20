@@ -102,5 +102,8 @@
     <string name="configuraciones">Configuraciones</string>
     <string name="cerrar">Cerrar</string>
     <string name="ajustes">Ajustes</string>
+    <string name="columnas_3_x_3">Ahora: 3 x 3</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="set">Establecer</string>
 
 </resources>

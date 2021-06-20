@@ -4,6 +4,13 @@ package com.futurefix.wallsnakano;
 public class Auxiliar {
 
     public static Boolean estadoactualCheckBox;
+    public static int estadoSelectorColumnas=3;
+    /*
+    * 1 x 1 el estado es 0
+    * 2 x 2 el estado es 1
+    * 3 x 3 el estado es 2
+    * 4 x 4 el estado es 3
+    * */
     public static int iteradorAnuncios=1;
 
     public Auxiliar() {
@@ -12,6 +19,8 @@ public class Auxiliar {
     public static void guardarEstadoCheckBox(boolean bol){
         estadoactualCheckBox = bol;
     }
+
+    public static void guardarEstadoelectorColumnas(int intero){estadoSelectorColumnas = intero;}
 
 
     // Intento de no replicar codigo

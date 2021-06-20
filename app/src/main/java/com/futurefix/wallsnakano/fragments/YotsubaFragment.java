@@ -8,8 +8,10 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.futurefix.wallsnakano.Auxiliar;
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapter;
 import com.futurefix.wallsnakano.adaptadores.WallpaperService;
@@ -43,8 +45,26 @@ public class YotsubaFragment extends Fragment {
     }
 
     public void cargarLista() {
-        rc.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperService.wallpaperYotsuba, R.layout.item_wallpaper, getParentFragment(), getContext(),21);
+        WallpaperAdapter adapter;
+        switch (Auxiliar.estadoSelectorColumnas){
+            case 0:
+                rc.setLayoutManager(new LinearLayoutManager(getContext()));
+                adapter = new WallpaperAdapter(WallpaperService.wallpaperYotsuba, R.layout.item_wallpaper_1, getParentFragment(), getContext(),21);
+                break;
+            case 1:
+                rc.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                adapter = new WallpaperAdapter(WallpaperService.wallpaperYotsuba, R.layout.item_wallpaper_2, getParentFragment(), getContext(),21);
+                break;
+            case 3:
+                rc.setLayoutManager(new GridLayoutManager(getContext(), 4));
+                adapter = new WallpaperAdapter(WallpaperService.wallpaperYotsuba, R.layout.item_wallpaper_4, getParentFragment(), getContext(),21);
+                break;
+            case 2:
+            default:
+                rc.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                adapter = new WallpaperAdapter(WallpaperService.wallpaperYotsuba, R.layout.item_wallpaper_3, getParentFragment(), getContext(),21);
+                break;
+        }
         rc.setAdapter(adapter);
     }
 

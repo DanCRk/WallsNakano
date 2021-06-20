@@ -83,7 +83,7 @@ public class CategoriasWpps extends AppCompatActivity {
 
     public void cargarLista() {
         rc.setLayoutManager(new GridLayoutManager(this, 3));
-        WallpaperAdapterWppsCateg adapter = new WallpaperAdapterWppsCateg(WallpaperService.WallpaperCat, R.layout.item_wallpaper, this, this);
+        WallpaperAdapterWppsCateg adapter = new WallpaperAdapterWppsCateg(WallpaperService.WallpaperCat, R.layout.item_wallpaper_3, this, this);
         rc.setAdapter(adapter);
     }
 

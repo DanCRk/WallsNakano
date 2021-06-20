@@ -14,6 +14,7 @@ import com.futurefix.wallsnakano.fragments.YotsubaFragment;
 
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("ALL")
 public class PagerAdapter extends FragmentPagerAdapter {
     int numTabs;
 
@@ -22,17 +23,15 @@ public class PagerAdapter extends FragmentPagerAdapter {
         this.numTabs = behavior;
     }
 
-
-    @NotNull
     @Override
     public Fragment getItem(int position) {
         switch (position){
             case 0:
                 return new CategoriasFragment();
             case 1:
-                return new NinoFragment();
-            case 2:
                 return new ItsukiFragment();
+            case 2:
+                return new NinoFragment();
             case 3:
                 return new MikuFragment();
             case 4:

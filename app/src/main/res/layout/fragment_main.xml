@@ -43,13 +43,13 @@
                 android:id="@+id/opcion2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NINO" />
+                android:text="ITSUKI" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/opcion3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ITSUKI" />
+                android:text="NINO" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/opcion4"
