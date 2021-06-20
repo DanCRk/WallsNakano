@@ -73,10 +73,10 @@ public class VistaWallpaper extends AppCompatActivity {
         animCarga.loop(false);
 
         descarga.setOnClickListener(v -> {
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference reference = database.getReference("Wallpapers").child(id);
-            reference.removeValue();
-            finish();
+//            FirebaseDatabase database = FirebaseDatabase.getInstance();
+////            DatabaseReference reference = database.getReference("Wallpapers").child(id);
+////            reference.removeValue();
+////            finish();
         });
 
         img_ampliada.setOnClickListener(v -> {
