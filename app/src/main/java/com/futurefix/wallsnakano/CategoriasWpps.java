@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.futurefix.wallsnakano.adaptadores.WallpaperAdapter;
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapterWppsCateg;
 import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
@@ -82,8 +84,29 @@ public class CategoriasWpps extends AppCompatActivity {
     }
 
     public void cargarLista() {
-        rc.setLayoutManager(new GridLayoutManager(this, 3));
-        WallpaperAdapterWppsCateg adapter = new WallpaperAdapterWppsCateg(WallpaperService.WallpaperCat, R.layout.item_wallpaper_3, this, this);
+        WallpaperAdapterWppsCateg adapter = null;
+        switch (Auxiliar.estadoSelectorColumnas){
+            case 0:
+                rc.setLayoutManager(new LinearLayoutManager(this));
+                adapter = new WallpaperAdapterWppsCateg(WallpaperService.WallpaperCat, R.layout.item_wallpaper_1, this, this);
+                break;
+            case 1:
+                rc.setLayoutManager(new GridLayoutManager(this, 2));
+                adapter = new WallpaperAdapterWppsCateg(WallpaperService.WallpaperCat, R.layout.item_wallpaper_2, this, this);
+                break;
+            case 2:
+                rc.setLayoutManager(new GridLayoutManager(this, 3));
+                adapter = new WallpaperAdapterWppsCateg(WallpaperService.WallpaperCat, R.layout.item_wallpaper_3, this, this);
+                break;
+            case 3:
+                rc.setLayoutManager(new GridLayoutManager(this, 4));
+                adapter = new WallpaperAdapterWppsCateg(WallpaperService.WallpaperCat, R.layout.item_wallpaper_4, this, this);
+                break;
+            default:
+                break;
+        }
+
+
         rc.setAdapter(adapter);
     }
 

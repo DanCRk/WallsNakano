@@ -19,8 +19,11 @@ import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 
@@ -60,6 +63,7 @@ public class VistaWallpaper extends AppCompatActivity {
 
         final Intent intent = getIntent();
         url = Uri.parse(intent.getStringExtra("ItemUrl"));
+        String id = intent.getStringExtra("ItemId");
 
         Glide.with(this).load(url).apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3))).into(img_fondo);
         Glide.with(this).load(url).into(img);
@@ -67,6 +71,13 @@ public class VistaWallpaper extends AppCompatActivity {
         Glide.with(this).load(url).into(img_ampliada);
 
         animCarga.loop(false);
+
+        descarga.setOnClickListener(v -> {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference reference = database.getReference("Wallpapers").child(id);
+            reference.removeValue();
+            finish();
+        });
 
         img_ampliada.setOnClickListener(v -> {
             if (ampliado){

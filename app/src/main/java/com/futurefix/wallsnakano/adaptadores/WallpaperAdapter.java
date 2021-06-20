@@ -71,6 +71,7 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
             holder.itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(v.getContext(), VistaWallpaper.class);
                 intent.putExtra("ItemUrl", wallpaper.getUrl());
+                intent.putExtra("ItemId", wallpaper.getId());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             });
