@@ -161,7 +161,10 @@ public class ConfigActivity extends AppCompatActivity{
             dialog.dismiss();
         });
 
-        mBuilder.setNegativeButton(R.string.cancelar, (dialog, which) -> cual = auxCual);
+        mBuilder.setNegativeButton(R.string.cancelar, (dialog, which) -> {
+                cual = auxCual;
+                Auxiliar.estadoSelectorColumnas=aux2;
+        });
 
         AlertDialog mDialog = mBuilder.create();
         mDialog.show();
