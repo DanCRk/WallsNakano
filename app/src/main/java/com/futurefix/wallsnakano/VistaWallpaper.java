@@ -2,9 +2,12 @@ package com.futurefix.wallsnakano;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.app.WallpaperManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -19,11 +22,8 @@ import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 
@@ -63,7 +63,7 @@ public class VistaWallpaper extends AppCompatActivity {
 
         final Intent intent = getIntent();
         url = Uri.parse(intent.getStringExtra("ItemUrl"));
-        String id = intent.getStringExtra("ItemId");
+//        String id = intent.getStringExtra("ItemId");
 
         Glide.with(this).load(url).apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3))).into(img_fondo);
         Glide.with(this).load(url).into(img);
@@ -72,7 +72,15 @@ public class VistaWallpaper extends AppCompatActivity {
 
         animCarga.loop(false);
 
+        BitmapDrawable drawable = (BitmapDrawable) imgSincortes.getDrawable();
+        Bitmap bitmapShido = drawable.getBitmap();  // error java.lang.NullPointerException
+
         descarga.setOnClickListener(v -> {
+
+            solicitarpermisos();
+
+            Save savefile = new Save();
+            savefile.SaveImage(this, bitmapShido);
 //            FirebaseDatabase database = FirebaseDatabase.getInstance();
 ////            DatabaseReference reference = database.getReference("Wallpapers").child(id);
 ////            reference.removeValue();
@@ -141,12 +149,13 @@ public class VistaWallpaper extends AppCompatActivity {
            finish();
        }
     }
-//    private  void  solicitarpermisos() {
-//        int permisoguardar = ActivityCompat.checkSelfPermission(VistaWallpaper.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//        if (permisoguardar != PackageManager.PERMISSION_GRANTED) {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 111);
-//            }
-//        }
-//    }
+
+    private  void  solicitarpermisos() {
+        int permisoguardar = ActivityCompat.checkSelfPermission(VistaWallpaper.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permisoguardar != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 111);
+            }
+        }
+    }
 }
