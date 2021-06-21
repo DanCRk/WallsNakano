@@ -2,13 +2,12 @@ package com.futurefix.wallsnakano;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Environment;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -17,9 +16,12 @@ import java.util.Calendar;
 public class Save {
 
     private Context TheThis;
+    Bitmap ImageToSave;
 
-    public void SaveImage(Context context, Bitmap ImageToSave) {
+    public void SaveImage(Context context, BitmapDrawable image) {
 
+
+        ImageToSave = image.getBitmap();
         TheThis = context;
         String nameOfFolder = "/NakanosWallpapers";
         String file_path = Environment.getExternalStorageDirectory().getAbsolutePath() + nameOfFolder;
@@ -34,8 +36,7 @@ public class Save {
         File file = new File(dir, nameOfFile + CurrentDateAndTime + ".jpg");
 
         try {
-            FileOutputStream fOut = new FileOutputStream(file);
-
+            FileOutputStream fOut = new FileOutputStream(file);// Aqui esta el pedo
             ImageToSave.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
             fOut.flush();
             fOut.close();

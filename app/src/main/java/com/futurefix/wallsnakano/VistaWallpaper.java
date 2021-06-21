@@ -78,9 +78,9 @@ public class VistaWallpaper extends AppCompatActivity {
 
             solicitarpermisos();
             BitmapDrawable drawable = (BitmapDrawable) imgSincortes.getDrawable();
-            Bitmap bitmapShido = drawable.getBitmap();  // error java.lang.NullPointerException
+            //Bitmap bitmapShido = drawable.getBitmap();  // error java.lang.NullPointerException
             Save savefile = new Save();
-            savefile.SaveImage(this, bitmapShido);
+            savefile.SaveImage(this, drawable);
 //            FirebaseDatabase database = FirebaseDatabase.getInstance();
 ////            DatabaseReference reference = database.getReference("Wallpapers").child(id);
 ////            reference.removeValue();
