@@ -117,7 +117,7 @@ public class VistaWallpaper extends AppCompatActivity {
             try {
                 WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
                 BitmapDrawable drawable = (BitmapDrawable) imgSincortes.getDrawable();
-                Bitmap bit = drawable.getBitmap();  // error java.lang.NullPointerException
+                Bitmap bit = drawable.getBitmap();
                 wallpaperManager.setBitmap(bit);
                 Toast.makeText(VistaWallpaper.this, "Listo!", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
@@ -128,7 +128,7 @@ public class VistaWallpaper extends AppCompatActivity {
             try {
                 WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
                 BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();
-                Bitmap bit = drawable.getBitmap();  // error java.lang.NullPointerException
+                Bitmap bit = drawable.getBitmap();
                 wallpaperManager.setBitmap(bit);
                 Toast.makeText(VistaWallpaper.this, "Listo!", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
