@@ -22,7 +22,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -51,7 +50,7 @@ public class CategoriasFragment extends Fragment {
 
     public void cargarLista() {
         rc.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperService.Categorias, R.layout.item_categorias, getParentFragment(), getContext(), 22, 6);
+        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperService.Categorias, R.layout.item_categorias, getParentFragment(), getContext(), 22);
         rc.setAdapter(adapter);
     }
 

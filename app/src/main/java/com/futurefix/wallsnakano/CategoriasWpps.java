@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class CategoriasWpps extends AppCompatActivity {
     RecyclerView rc;
     TextView tv, cuantos;
     AdView adView;
+    ImageButton atras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,11 @@ public class CategoriasWpps extends AppCompatActivity {
         tv = findViewById(R.id.texto_toolbar);
         cuantos = findViewById(R.id.cuantoswpps);
         adView = findViewById(R.id.adViewBannerCategorias);
+        atras = findViewById(R.id.botonatras);
+
+        atras.setVisibility(View.VISIBLE);
+
+        atras.setOnClickListener(v -> finish());
 
         // Anuncios
         AdRequest adRequest = new AdRequest.Builder().build();

@@ -230,6 +230,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onResume() {
         super.onResume();
+        textoToolbar.setText(R.string.nakano_s_wallpapers);
         save(Auxiliar.estadoactualCheckBox);
         saveColumnas(Auxiliar.estadoSelectorColumnas);
         if (Auxiliar.iteradorAnuncios==4){

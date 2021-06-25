@@ -73,30 +73,14 @@ public class VistaWallpaper extends AppCompatActivity {
 
         final Intent intent = getIntent();
         url = Uri.parse(intent.getStringExtra("ItemUrl"));
-        // ´positioon de la lista de todos los wapps
-        int posi = intent.getIntExtra("posi", 0);
-
-        // position de la lista de fav
-        int position = intent.getIntExtra("position",0);
-
-        // identificador
-        int identi = intent.getIntExtra("identi",0);
 
         // referencia de donde vienen
         Wallpaper wallpa = (Wallpaper) intent.getSerializableExtra("wpp");
 
-        if (identi==0){
-            if (WallpaperService.favoritos.contains(WallpaperService.todosWallpapers.get(posi))){
-                favoritos.setImageResource(R.drawable.ic_favorito);
-            }else {
-                favoritos.setImageResource(R.drawable.ic_nofav);
-            }
-        }else if (identi==1){
-            if (WallpaperService.favoritos.contains(WallpaperService.favoritos.get(position))){
-                favoritos.setImageResource(R.drawable.ic_favorito);
-            }else {
-                favoritos.setImageResource(R.drawable.ic_nofav);
-            }
+        if (WallpaperService.favoritos.contains(wallpa)){
+            favoritos.setImageResource(R.drawable.ic_favorito);
+        }else {
+            favoritos.setImageResource(R.drawable.ic_nofav);
         }
 
         Glide.with(this).load(url).apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3))).into(img_fondo);
@@ -143,26 +127,14 @@ public class VistaWallpaper extends AppCompatActivity {
         });
 
         favoritos.setOnClickListener(v -> {
-            if (identi==0){
-                if (!WallpaperService.favoritos.contains(WallpaperService.todosWallpapers.get(posi))){
-                    WallpaperService.addWallpaperFavoritos(WallpaperService.todosWallpapers.get(posi));
-                    favoritos.setImageResource(R.drawable.ic_favorito);
-                    Toast.makeText(VistaWallpaper.this, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
-                }else {
-                    WallpaperService.removeWallpaperFavoritos(WallpaperService.todosWallpapers.get(posi));
-                    favoritos.setImageResource(R.drawable.ic_nofav);
-                    Toast.makeText(VistaWallpaper.this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
-                }
-            }else if (identi==1){
-                if (!WallpaperService.favoritos.contains(WallpaperService.favoritos.get(position))){
-                    WallpaperService.addWallpaperFavoritos(WallpaperService.favoritos.get(position));
-                    favoritos.setImageResource(R.drawable.ic_favorito);
-                    Toast.makeText(VistaWallpaper.this, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
-                }else {
-                    WallpaperService.removeWallpaperFavoritos(WallpaperService.favoritos.get(position));
-                    favoritos.setImageResource(R.drawable.ic_nofav);
-                    Toast.makeText(VistaWallpaper.this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
-                }
+            if (!WallpaperService.favoritos.contains(wallpa)){
+                WallpaperService.addWallpaperFavoritos(wallpa);
+                favoritos.setImageResource(R.drawable.ic_favorito);
+                Toast.makeText(VistaWallpaper.this, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+            }else {
+                WallpaperService.removeWallpaperFavoritos(wallpa);
+                favoritos.setImageResource(R.drawable.ic_nofav);
+                Toast.makeText(VistaWallpaper.this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
             }
         });
     }

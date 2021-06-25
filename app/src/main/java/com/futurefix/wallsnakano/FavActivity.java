@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class FavActivity extends AppCompatActivity {
 
     RecyclerView rc;
     TextView tv, cuantos;
+    ImageButton atras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,11 @@ public class FavActivity extends AppCompatActivity {
         rc = findViewById(R.id.recyclerViewWallpaperCategorias);
         tv = findViewById(R.id.texto_toolbar);
         cuantos = findViewById(R.id.cuantoswpps);
+        atras = findViewById(R.id.botonatras);
+
+        atras.setVisibility(View.VISIBLE);
+
+        atras.setOnClickListener(v -> finish());
 
         tv.setText(R.string.favoritos);
 

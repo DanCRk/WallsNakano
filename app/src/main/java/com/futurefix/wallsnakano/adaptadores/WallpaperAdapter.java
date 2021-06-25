@@ -32,18 +32,16 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
     Fragment fragment;
     Context context;
     int codigo;
-    int referencia;
 
     final public int CODE_CATEGORIAS = 22;
     final public int CODE_WALLPAPER = 21;
 
-    public WallpaperAdapter(List<Wallpaper> lista, int layout, Fragment fragment, Context context, int codigo, int referencia) {
+    public WallpaperAdapter(List<Wallpaper> lista, int layout, Fragment fragment, Context context, int codigo) {
         this.lista = lista;
         this.layout = layout;
         this.fragment = fragment;
         this.context = context;
         this.codigo = codigo;
-        this.referencia = referencia;
     }
 
     @NonNull
@@ -76,7 +74,6 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
                 intent.putExtra("ItemUrl", wallpaper.getUrl());
                 intent.putExtra("ItemId", wallpaper.getId());
                 intent.putExtra("posi", position);
-                intent.putExtra("referencia", referencia);
                 intent.putExtra("wpp", wallpaper);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

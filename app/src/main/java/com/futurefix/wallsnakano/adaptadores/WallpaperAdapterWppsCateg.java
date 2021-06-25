@@ -54,6 +54,7 @@ public class WallpaperAdapterWppsCateg extends RecyclerView.Adapter<WallpaperAda
             intent.putExtra("ItemUrl", wallpaper.getUrl());
             intent.putExtra("position", position);
             intent.putExtra("identi", 1);
+            intent.putExtra("wpp", wallpaper);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });
