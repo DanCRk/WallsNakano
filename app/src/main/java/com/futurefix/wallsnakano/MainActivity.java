@@ -9,6 +9,8 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
+
+        textoToolbar.setText(R.string.nakano_s_wallpapers);
 
         // Solicitar los datos de todos los wallpapers
 
@@ -136,10 +140,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         drawerLayout.closeDrawer(GravityCompat.START);
-//        if (menuItem.getItemId() == R.id.favoritos_menu) {
-//        }
-//        if (menuItem.getItemId() == R.id.perfil_menu) {
-//        }
+        if (menuItem.getItemId() == R.id.favoritos_menu) {
+            Intent i = new Intent(this, FavActivity.class);
+            startActivity(i);
+            textoToolbar.setText(R.string.favoritos);
+        }
         if (menuItem.getItemId()==R.id.comparte_menu){
             Intent compartir = new Intent(Intent.ACTION_SEND);
             compartir.setType("text/plain");

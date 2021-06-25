@@ -52,6 +52,8 @@ public class WallpaperAdapterWppsCateg extends RecyclerView.Adapter<WallpaperAda
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), VistaWallpaper.class);
             intent.putExtra("ItemUrl", wallpaper.getUrl());
+            intent.putExtra("position", position);
+            intent.putExtra("identi", 1);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });

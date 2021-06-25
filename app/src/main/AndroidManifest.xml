@@ -4,10 +4,10 @@
     package="com.futurefix.wallsnakano">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
     <application
@@ -17,10 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WallsNakano"
         tools:ignore="AllowBackup">
+        <activity android:name=".FavActivity"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-2030839089746380~9956071757"/>
+            android:value="ca-app-pub-2030839089746380~9956071757" />
 
         <activity android:name=".AcercaActivity" />
         <activity android:name=".ConfigActivity" />

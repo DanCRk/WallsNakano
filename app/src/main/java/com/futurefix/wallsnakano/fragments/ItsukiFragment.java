@@ -48,19 +48,19 @@ public class ItsukiFragment extends Fragment {
         switch (Auxiliar.estadoSelectorColumnas){
             case 0:
                 rc.setLayoutManager(new LinearLayoutManager(getContext()));
-                adapter = new WallpaperAdapter(WallpaperService.wallpaperItsuki, R.layout.item_wallpaper_1, getParentFragment(), getContext(),21);
+                adapter = new WallpaperAdapter(WallpaperService.wallpaperItsuki, R.layout.item_wallpaper_1, getParentFragment(), getContext(),21, 1);
                 break;
             case 1:
                 rc.setLayoutManager(new GridLayoutManager(getContext(), 2));
-                adapter = new WallpaperAdapter(WallpaperService.wallpaperItsuki, R.layout.item_wallpaper_2, getParentFragment(), getContext(),21);
+                adapter = new WallpaperAdapter(WallpaperService.wallpaperItsuki, R.layout.item_wallpaper_2, getParentFragment(), getContext(),21, 1);
                 break;
             case 2:
                 rc.setLayoutManager(new GridLayoutManager(getContext(), 3));
-                adapter = new WallpaperAdapter(WallpaperService.wallpaperItsuki, R.layout.item_wallpaper_3, getParentFragment(), getContext(),21);
+                adapter = new WallpaperAdapter(WallpaperService.wallpaperItsuki, R.layout.item_wallpaper_3, getParentFragment(), getContext(),21, 1);
                 break;
             case 3:
                 rc.setLayoutManager(new GridLayoutManager(getContext(), 4));
-                adapter = new WallpaperAdapter(WallpaperService.wallpaperItsuki, R.layout.item_wallpaper_4, getParentFragment(), getContext(),21);
+                adapter = new WallpaperAdapter(WallpaperService.wallpaperItsuki, R.layout.item_wallpaper_4, getParentFragment(), getContext(),21, 1);
                 break;
             default:
                 break;

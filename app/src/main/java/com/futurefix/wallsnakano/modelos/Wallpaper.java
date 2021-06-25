@@ -1,8 +1,8 @@
 package com.futurefix.wallsnakano.modelos;
 
-import java.util.Objects;
+import java.io.Serializable;
 
-public class Wallpaper {
+public class Wallpaper implements Serializable {
     private String id;
     private String nombre;
     private String tag1;

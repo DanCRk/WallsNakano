@@ -6,7 +6,9 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.WallpaperManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -22,6 +24,8 @@ import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.futurefix.wallsnakano.adaptadores.WallpaperService;
+import com.futurefix.wallsnakano.modelos.Wallpaper;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -34,10 +38,11 @@ public class VistaWallpaper extends AppCompatActivity {
     ImageView img_fondo, img_ampliada,img,imgSincortes;
     ImageButton cerrar;
     Uri url;
-    ImageButton setwpp, descarga;
+    ImageButton setwpp, descarga, favoritos;
     boolean ampliado=false;
     AdView banner;
     LottieAnimationView animCarga;
+    SharedPreferences sharedPreferences;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
@@ -46,6 +51,8 @@ public class VistaWallpaper extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.activity_vista_wallpaper);
+
+        sharedPreferences = getPreferences(Context.MODE_PRIVATE);
 
         cerrar = findViewById(R.id.boton_cerrar_vista);
         img = findViewById(R.id.imagen_vista);
@@ -56,6 +63,9 @@ public class VistaWallpaper extends AppCompatActivity {
         descarga = findViewById(R.id.buttondescarga);
         animCarga = findViewById(R.id.animacion_view);
         banner = findViewById(R.id.adViewBannerVista);
+        favoritos = findViewById(R.id.buttonfavorito);
+
+
 
         //Anuncios
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -63,7 +73,31 @@ public class VistaWallpaper extends AppCompatActivity {
 
         final Intent intent = getIntent();
         url = Uri.parse(intent.getStringExtra("ItemUrl"));
-//        String id = intent.getStringExtra("ItemId");
+        // ´positioon de la lista de todos los wapps
+        int posi = intent.getIntExtra("posi", 0);
+
+        // position de la lista de fav
+        int position = intent.getIntExtra("position",0);
+
+        // identificador
+        int identi = intent.getIntExtra("identi",0);
+
+        // referencia de donde vienen
+        Wallpaper wallpa = (Wallpaper) intent.getSerializableExtra("wpp");
+
+        if (identi==0){
+            if (WallpaperService.favoritos.contains(WallpaperService.todosWallpapers.get(posi))){
+                favoritos.setImageResource(R.drawable.ic_favorito);
+            }else {
+                favoritos.setImageResource(R.drawable.ic_nofav);
+            }
+        }else if (identi==1){
+            if (WallpaperService.favoritos.contains(WallpaperService.favoritos.get(position))){
+                favoritos.setImageResource(R.drawable.ic_favorito);
+            }else {
+                favoritos.setImageResource(R.drawable.ic_nofav);
+            }
+        }
 
         Glide.with(this).load(url).apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3))).into(img_fondo);
         Glide.with(this).load(url).into(img);
@@ -71,8 +105,6 @@ public class VistaWallpaper extends AppCompatActivity {
         Glide.with(this).load(url).into(img_ampliada);
 
         animCarga.loop(false);
-
-
 
         descarga.setOnClickListener(v -> {
 
@@ -108,6 +140,30 @@ public class VistaWallpaper extends AppCompatActivity {
         cerrar.setOnClickListener(v -> {
             Auxiliar.iteradorAnuncios ++;
             finish();
+        });
+
+        favoritos.setOnClickListener(v -> {
+            if (identi==0){
+                if (!WallpaperService.favoritos.contains(WallpaperService.todosWallpapers.get(posi))){
+                    WallpaperService.addWallpaperFavoritos(WallpaperService.todosWallpapers.get(posi));
+                    favoritos.setImageResource(R.drawable.ic_favorito);
+                    Toast.makeText(VistaWallpaper.this, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+                }else {
+                    WallpaperService.removeWallpaperFavoritos(WallpaperService.todosWallpapers.get(posi));
+                    favoritos.setImageResource(R.drawable.ic_nofav);
+                    Toast.makeText(VistaWallpaper.this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+                }
+            }else if (identi==1){
+                if (!WallpaperService.favoritos.contains(WallpaperService.favoritos.get(position))){
+                    WallpaperService.addWallpaperFavoritos(WallpaperService.favoritos.get(position));
+                    favoritos.setImageResource(R.drawable.ic_favorito);
+                    Toast.makeText(VistaWallpaper.this, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
+                }else {
+                    WallpaperService.removeWallpaperFavoritos(WallpaperService.favoritos.get(position));
+                    favoritos.setImageResource(R.drawable.ic_nofav);
+                    Toast.makeText(VistaWallpaper.this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
     }
 
@@ -158,4 +214,9 @@ public class VistaWallpaper extends AppCompatActivity {
             }
         }
     }
+
+//    private void saveFavoritos(String identificador){
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.
+//    }
 }

@@ -51,13 +51,14 @@ public class CategoriasFragment extends Fragment {
 
     public void cargarLista() {
         rc.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperService.Categorias, R.layout.item_categorias, getParentFragment(), getContext(), 22);
+        WallpaperAdapter adapter = new WallpaperAdapter(WallpaperService.Categorias, R.layout.item_categorias, getParentFragment(), getContext(), 22, 6);
         rc.setAdapter(adapter);
     }
 
     public void cargarDatos() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Categorias");
+        reference.getRef();
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
@@ -92,30 +93,6 @@ public class CategoriasFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
-            }
-        });
-
-        Query query = reference.orderByChild("nombre").equalTo("miku");
-        query.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull @NotNull DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
             }
         });
     }

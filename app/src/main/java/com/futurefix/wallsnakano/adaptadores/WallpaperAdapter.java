@@ -3,6 +3,7 @@ package com.futurefix.wallsnakano.adaptadores;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,16 +32,18 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
     Fragment fragment;
     Context context;
     int codigo;
+    int referencia;
 
     final public int CODE_CATEGORIAS = 22;
     final public int CODE_WALLPAPER = 21;
 
-    public WallpaperAdapter(List<Wallpaper> lista, int layout, Fragment fragment, android.content.Context context, int codigo) {
+    public WallpaperAdapter(List<Wallpaper> lista, int layout, Fragment fragment, Context context, int codigo, int referencia) {
         this.lista = lista;
         this.layout = layout;
         this.fragment = fragment;
         this.context = context;
         this.codigo = codigo;
+        this.referencia = referencia;
     }
 
     @NonNull
@@ -72,6 +75,9 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.Wall
                 Intent intent = new Intent(v.getContext(), VistaWallpaper.class);
                 intent.putExtra("ItemUrl", wallpaper.getUrl());
                 intent.putExtra("ItemId", wallpaper.getId());
+                intent.putExtra("posi", position);
+                intent.putExtra("referencia", referencia);
+                intent.putExtra("wpp", wallpaper);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             });

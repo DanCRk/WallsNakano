@@ -18,6 +18,8 @@ public class WallpaperService {
     public static List<Wallpaper> Categorias = new ArrayList<>();
     public static List<Wallpaper> WallpaperCat = new ArrayList<>();
 
+    public static List<Wallpaper> favoritos = new ArrayList<>();
+
     // Todos los wpps
 
     public static void addWallpaperTodos(Wallpaper wallpaper){todosWallpapers.add(wallpaper);}
@@ -35,6 +37,10 @@ public class WallpaperService {
     public static void addWallpaperCategorias(Wallpaper wallpaper){ Categorias.add(wallpaper);}
     public static void addWallpaperWallpaperCat(Wallpaper wallpaper){ WallpaperCat.add(wallpaper);}
     public static void clearList(){ WallpaperCat.clear(); }
+
+    // Metodo para la lista de favoritos
+    public static void addWallpaperFavoritos(Wallpaper wallpaper) {favoritos.add(wallpaper);}
+    public static void removeWallpaperFavoritos(Wallpaper wallpaper) {favoritos.remove(wallpaper);}
 
     // Metodo para retornar el tamaño de la lista de wpps
 
