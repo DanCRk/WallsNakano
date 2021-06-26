@@ -34,7 +34,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -108,8 +107,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Para que la mmda no se cargue dos veces :)
         comprobar(currentFragment);
 
+        final Intent intent = getIntent();
+        String idu = "";
+        try {
+            idu = intent.getStringExtra("wallpaper");
+            if (!idu.equals("")){
+                borrarWallpaper(idu);
+            }
+        }catch (Exception ignored){
+
+        }
+        idu = "";
+
         Auxiliar.guardarEstadoCheckBox(load());
         Auxiliar.guardarEstadoelectorColumnas(load2());
+        loadWallpapers();
     }
 
     private void comprobar(Fragment currentFragment){
@@ -245,12 +257,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         Auxiliar.guardarEstadoCheckBox(load());
         Auxiliar.guardarEstadoelectorColumnas(load2());
+
+        final Intent intent = getIntent();
+        String idu = "";
+        try {
+            idu = intent.getStringExtra("wallpaper");
+            if (!idu.equals("")){
+                borrarWallpaper(idu);
+            }
+        }catch (Exception ignored){
+
+        }
+        idu="";
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        saveWallpaperFavoritos();
+        loadWallpapers();
     }
 
     private void save(boolean isChecked) {
@@ -276,10 +300,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void saveWallpaperFavoritos(){
-        SharedPreferences.Editor editor = sharedPreferences3.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(WallpaperService.favoritos);
-        editor.putString("lista", json);
-        editor.apply();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        for (Wallpaper wallpaper : WallpaperService.favoritos){
+            if (!sharedPreferences.getString(wallpaper.getId(), "").equals(wallpaper.getId())){
+                editor.putString(wallpaper.getId(), wallpaper.getId());
+                editor.apply();
+            }
+        }
+    }
+
+    public void borrarWallpaper(String s){
+        SharedPreferences sharedPreferences1 = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sharedPreferences1.edit();
+        edit.remove(s);
+        edit.apply();
+    }
+
+    private void loadWallpapers (){
+        SharedPreferences sharedPreferences2 = getPreferences(Context.MODE_PRIVATE);
+        for (Wallpaper wallpaper : WallpaperService.todosWallpapers){
+            if (sharedPreferences2.getString(wallpaper.getId(), "").equals(wallpaper.getId())){
+                if (!WallpaperService.favoritos.contains(wallpaper)){
+                    WallpaperService.addWallpaperFavoritos(wallpaper);
+                }
+            }
+        }
     }
 }
