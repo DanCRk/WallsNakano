@@ -1,13 +1,15 @@
 package com.futurefix.wallsnakano;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Environment;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -16,27 +18,27 @@ import java.util.Calendar;
 public class Save {
 
     private Context TheThis;
-    Bitmap ImageToSave;
+    FileOutputStream fOut = null;
 
-    public void SaveImage(Context context, BitmapDrawable image) {
+    public void SaveImage(Context context, Bitmap ImageToSave) {
 
-
-        ImageToSave = image.getBitmap();
         TheThis = context;
-        String nameOfFolder = "/NakanosWallpapers";
+        String nameOfFolder = "/Download";
         String file_path = Environment.getExternalStorageDirectory().getAbsolutePath() + nameOfFolder;
         String CurrentDateAndTime = getCurrentDateAndTime();
         File dir = new File(file_path);
 
         if (!dir.exists()) {
             dir.mkdirs();
+            Toast.makeText(TheThis, "¡No se ha podido guardar la imagen!", Toast.LENGTH_SHORT).show();
         }
 
         String nameOfFile = "Wallpaper";
         File file = new File(dir, nameOfFile + CurrentDateAndTime + ".jpg");
 
         try {
-            FileOutputStream fOut = new FileOutputStream(file);// Aqui esta el pedo
+            fOut = new FileOutputStream(file);
+
             ImageToSave.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
             fOut.flush();
             fOut.close();
@@ -57,7 +59,7 @@ public class Save {
 
     private String getCurrentDateAndTime() {
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-­ss");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-­ss");
         String formattedDate = df.format(c.getTime());
         return formattedDate;
     }

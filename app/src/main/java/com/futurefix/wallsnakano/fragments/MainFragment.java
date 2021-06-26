@@ -75,7 +75,20 @@ public class MainFragment extends Fragment {
 
             }
         });
+        pagerAdapter.notifyDataSetChanged();
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         return  view;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        pagerAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        pagerAdapter.notifyDataSetChanged();
     }
 }

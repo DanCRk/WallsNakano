@@ -151,7 +151,7 @@ public class ConfigActivity extends AppCompatActivity{
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
         mBuilder.setTitle("Selecciona tamaño de las columnas");
         mBuilder.setCancelable(false);
-        mBuilder.setSingleChoiceItems(lista, aux2, (dialog, which) -> {
+        mBuilder.setSingleChoiceItems(lista, Auxiliar.estadoSelectorColumnas, (dialog, which) -> {
             cual = which;
             Auxiliar.guardarEstadoelectorColumnas(which);
         });

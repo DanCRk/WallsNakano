@@ -9,8 +9,6 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -36,6 +34,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String url;
     TextView textoToolbar;
     private InterstitialAd mInterstitial;
-    SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences, sharedPreferences3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        sharedPreferences3 = getPreferences(Context.MODE_PRIVATE);
 
         // Inicializar los anuncios
         MobileAds.initialize(this, initializationStatus -> {
@@ -233,6 +233,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         textoToolbar.setText(R.string.nakano_s_wallpapers);
         save(Auxiliar.estadoactualCheckBox);
         saveColumnas(Auxiliar.estadoSelectorColumnas);
+        saveWallpaperFavoritos();
         if (Auxiliar.iteradorAnuncios==4){
             if (mInterstitial!= null) {
                 mInterstitial.show(this);
@@ -244,6 +245,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         Auxiliar.guardarEstadoCheckBox(load());
         Auxiliar.guardarEstadoelectorColumnas(load2());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveWallpaperFavoritos();
     }
 
     private void save(boolean isChecked) {
@@ -266,5 +273,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private int load2() {
         SharedPreferences sharedPreferences2 = getPreferences(Context.MODE_PRIVATE);
         return sharedPreferences2.getInt("columnas", 2);
+    }
+
+    private void saveWallpaperFavoritos(){
+        SharedPreferences.Editor editor = sharedPreferences3.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(WallpaperService.favoritos);
+        editor.putString("lista", json);
+        editor.apply();
     }
 }
