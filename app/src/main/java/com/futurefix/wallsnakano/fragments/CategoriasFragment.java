@@ -44,7 +44,9 @@ public class CategoriasFragment extends Fragment {
         // Cargar Lista
         cargarLista();
         // Cargar Datos
-        cargarDatos();
+        if (WallpaperService.Categorias.isEmpty()){
+            cargarDatos();
+        }
         return view;
     }
 

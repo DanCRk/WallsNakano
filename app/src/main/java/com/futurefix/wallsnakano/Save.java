@@ -4,12 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Environment;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -28,17 +26,11 @@ public class Save {
         String CurrentDateAndTime = getCurrentDateAndTime();
         File dir = new File(file_path);
 
-        if (!dir.exists()) {
-            dir.mkdirs();
-            Toast.makeText(TheThis, "¡No se ha podido guardar la imagen!", Toast.LENGTH_SHORT).show();
-        }
-
         String nameOfFile = "Wallpaper";
         File file = new File(dir, nameOfFile + CurrentDateAndTime + ".jpg");
 
         try {
             fOut = new FileOutputStream(file);
-
             ImageToSave.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
             fOut.flush();
             fOut.close();
@@ -60,8 +52,7 @@ public class Save {
     private String getCurrentDateAndTime() {
         Calendar c = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-­ss");
-        String formattedDate = df.format(c.getTime());
-        return formattedDate;
+        return df.format(c.getTime());
     }
 
     private void UnableToSave() {
