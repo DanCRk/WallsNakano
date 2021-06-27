@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapterWppsCateg;
 import com.futurefix.wallsnakano.adaptadores.WallpaperService;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.Objects;
 
@@ -21,6 +23,7 @@ public class FavActivity extends AppCompatActivity {
     RecyclerView rc;
     TextView tv, cuantos;
     ImageButton atras;
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,11 @@ public class FavActivity extends AppCompatActivity {
         tv = findViewById(R.id.texto_toolbar);
         cuantos = findViewById(R.id.cuantoswpps);
         atras = findViewById(R.id.botonatras);
+        adView = findViewById(R.id.adViewBannerCategorias);
+
+        // Anuncios
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         atras.setVisibility(View.VISIBLE);
 
