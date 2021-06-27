@@ -106,5 +106,6 @@
     <string name="cancelar">Cancelar</string>
     <string name="set">Establecer</string>
     <string name="atras">Atras</string>
+    <string name="reintentar">REINTENTAR</string>
 
 </resources>
