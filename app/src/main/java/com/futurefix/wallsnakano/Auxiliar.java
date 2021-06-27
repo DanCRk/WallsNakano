@@ -1,5 +1,8 @@
 package com.futurefix.wallsnakano;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Auxiliar {
 
     public static Boolean estadoactualCheckBox;
@@ -11,6 +14,8 @@ public class Auxiliar {
     * 4 x 4 el estado es 3
     * */
     public static int iteradorAnuncios=1;
+
+    public static List<String> identi = new ArrayList<>();
 
     public Auxiliar() {
     }

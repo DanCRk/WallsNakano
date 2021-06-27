@@ -107,17 +107,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Para que la mmda no se cargue dos veces :)
         comprobar(currentFragment);
 
-        final Intent intent = getIntent();
-        String idu = "";
         try {
-            idu = intent.getStringExtra("wallpaper");
-            if (!idu.equals("")){
-                borrarWallpaper(idu);
-            }
+            borrarWallpaper();
         }catch (Exception ignored){
 
         }
-        idu = "";
 
         Auxiliar.guardarEstadoCheckBox(load());
         Auxiliar.guardarEstadoelectorColumnas(load2());
@@ -257,18 +251,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         Auxiliar.guardarEstadoCheckBox(load());
         Auxiliar.guardarEstadoelectorColumnas(load2());
-
-        final Intent intent = getIntent();
-        String idu = "";
         try {
-            idu = intent.getStringExtra("wallpaper");
-            if (!idu.equals("")){
-                borrarWallpaper(idu);
-            }
+            borrarWallpaper();
         }catch (Exception ignored){
 
         }
-        idu="";
     }
 
     @Override
@@ -309,11 +296,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void borrarWallpaper(String s){
+    public void borrarWallpaper(){
         SharedPreferences sharedPreferences1 = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sharedPreferences1.edit();
-        edit.remove(s);
-        edit.apply();
+        for (String s1 : Auxiliar.identi){
+            edit.remove(s1);
+            edit.apply();
+        }
     }
 
     private void loadWallpapers (){

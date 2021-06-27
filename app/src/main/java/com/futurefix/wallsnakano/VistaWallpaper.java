@@ -40,7 +40,6 @@ public class VistaWallpaper extends AppCompatActivity {
     boolean ampliado=false;
     AdView banner;
     LottieAnimationView animCarga;
-    Intent i;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -50,8 +49,6 @@ public class VistaWallpaper extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         setContentView(R.layout.activity_vista_wallpaper);
-
-         i = new Intent(this, MainActivity.class);
 
         cerrar = findViewById(R.id.boton_cerrar_vista);
         img = findViewById(R.id.imagen_vista);
@@ -121,14 +118,15 @@ public class VistaWallpaper extends AppCompatActivity {
             }else {
                 WallpaperService.removeWallpaperFavoritos(wallpa);
                 favoritos.setImageResource(R.drawable.ic_nofav);
-                i.putExtra("wallpaper", wallpa.getId());
+                if (!Auxiliar.identi.contains(wallpa.getId())){
+                    Auxiliar.identi.add(wallpa.getId());
+                }
                 Toast.makeText(VistaWallpaper.this, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
             }
         });
 
         cerrar.setOnClickListener(v -> {
             Auxiliar.iteradorAnuncios ++;
-            startActivity(i);
             finish();
         });
     }
@@ -168,7 +166,6 @@ public class VistaWallpaper extends AppCompatActivity {
            ampliado = !ampliado;
        }else{
            Auxiliar.iteradorAnuncios ++;
-           startActivity(i);
            finish();
        }
     }
