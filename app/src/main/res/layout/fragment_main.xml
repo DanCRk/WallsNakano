@@ -31,49 +31,11 @@
             app:tabIndicatorColor="@color/color_texto"
             app:tabMode="scrollable"
             app:tabRippleColor="@null"
-            app:tabTextColor="@color/color_texto">
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/opcion1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CATEGORIAS" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/opcion2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ITSUKI" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/opcion3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NINO" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/opcion4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MIKU" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/opcion5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="YOTSUBA" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/opcion6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ICHIKA" />
-
-        </com.google.android.material.tabs.TabLayout>
+            app:tabTextColor="@color/color_texto"/>
 
     </FrameLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

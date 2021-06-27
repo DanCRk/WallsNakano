@@ -16,7 +16,6 @@ import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.adaptadores.WallpaperAdapter;
 import com.futurefix.wallsnakano.adaptadores.WallpaperService;
 import com.futurefix.wallsnakano.modelos.Wallpaper;
-
 import java.util.Objects;
 
 public class NinoFragment extends Fragment {
@@ -169,5 +168,11 @@ public class NinoFragment extends Fragment {
                 }
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        cargarLista();
     }
 }

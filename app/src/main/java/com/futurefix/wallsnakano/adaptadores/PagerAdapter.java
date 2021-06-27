@@ -3,48 +3,32 @@ package com.futurefix.wallsnakano.adaptadores;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-
-import com.futurefix.wallsnakano.fragments.CategoriasFragment;
-import com.futurefix.wallsnakano.fragments.IchikaFragment;
-import com.futurefix.wallsnakano.fragments.ItsukiFragment;
-import com.futurefix.wallsnakano.fragments.MikuFragment;
-import com.futurefix.wallsnakano.fragments.NinoFragment;
-import com.futurefix.wallsnakano.fragments.YotsubaFragment;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import org.jetbrains.annotations.NotNull;
 
-@SuppressWarnings("ALL")
-public class PagerAdapter extends FragmentPagerAdapter {
-    int numTabs;
+import java.util.ArrayList;
 
-    public PagerAdapter(@NonNull @NotNull FragmentManager fm, int behavior) {
-        super(fm, behavior);
-        this.numTabs = behavior;
+public class PagerAdapter extends FragmentStateAdapter {
+
+    ArrayList<Fragment> arrayList = new ArrayList<>();
+
+    public PagerAdapter(@NonNull @NotNull FragmentManager fragmentManager, @NonNull @NotNull Lifecycle lifecycle) {
+        super(fragmentManager, lifecycle);
+    }
+
+    @NonNull
+    @NotNull
+    @Override
+    public Fragment createFragment(int position) {
+        return arrayList.get(position);
     }
 
     @Override
-    public Fragment getItem(int position) {
-        switch (position){
-            case 0:
-                return new CategoriasFragment();
-            case 1:
-                return new ItsukiFragment();
-            case 2:
-                return new NinoFragment();
-            case 3:
-                return new MikuFragment();
-            case 4:
-                return new YotsubaFragment();
-            case 5:
-                return new IchikaFragment();
-            default:
-                return null;
-        }
+    public int getItemCount() {
+        return arrayList.size();
     }
 
-    @Override
-    public int getCount() {
-        return numTabs;
-    }
+    public void addFragment(Fragment fragment){ arrayList.add(fragment); }
 }

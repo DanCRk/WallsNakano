@@ -169,4 +169,10 @@ public class YotsubaFragment extends Fragment {
             }
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        cargarLista();
+    }
 }

@@ -170,4 +170,10 @@ public class MikuFragment extends Fragment {
             }
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        cargarLista();
+    }
 }

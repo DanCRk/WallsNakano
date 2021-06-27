@@ -3,7 +3,7 @@ package com.futurefix.wallsnakano.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,22 +14,20 @@ import com.futurefix.wallsnakano.adaptadores.PagerAdapter;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainFragment extends Fragment {
 
     TabLayout tabLayout;
-    ViewPager viewPager;
+    ViewPager2 viewPager;
     PagerAdapter pagerAdapter;
 
     AdView banner;
 
-    public MainFragment() {
-        // Required empty public constructor
-    }
+    public MainFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.viewPager);
@@ -39,44 +37,17 @@ public class MainFragment extends Fragment {
         AdRequest adRequest = new AdRequest.Builder().build();
         banner.loadAd(adRequest);
 
-        pagerAdapter =new PagerAdapter(getChildFragmentManager(), tabLayout.getTabCount());
+        pagerAdapter =new PagerAdapter(getChildFragmentManager(), getLifecycle());
+
+        pagerAdapter.addFragment(new CategoriasFragment());  //0
+        pagerAdapter.addFragment(new NinoFragment());
+        pagerAdapter.addFragment(new ItsukiFragment());
+        pagerAdapter.addFragment(new MikuFragment());
+        pagerAdapter.addFragment(new YotsubaFragment());
+        pagerAdapter.addFragment(new IchikaFragment());
         viewPager.setAdapter(pagerAdapter);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                if(tab.getPosition()==0){
-                    pagerAdapter.notifyDataSetChanged();
-                }
-                if(tab.getPosition()==1){
-                    pagerAdapter.notifyDataSetChanged();
-                }
-                if(tab.getPosition()==2){
-                    pagerAdapter.notifyDataSetChanged();
-                }
-                if(tab.getPosition()==3){
-                    pagerAdapter.notifyDataSetChanged();
-                }
-                if(tab.getPosition()==4){
-                    pagerAdapter.notifyDataSetChanged();
-                }
-                if(tab.getPosition()==5){
-                    pagerAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-        pagerAdapter.notifyDataSetChanged();
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        final String [] tabss = new String[]{"CATEGORIAS","NINO","ITSUKI","MIKU","YOTSUBA","ICHIKA"};
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) ->  tab.setText(tabss[position])).attach();
         return  view;
     }
 
