@@ -114,6 +114,7 @@ public class VistaWallpaper extends AppCompatActivity {
             if (!WallpaperService.favoritos.contains(wallpa)){
                 WallpaperService.addWallpaperFavoritos(wallpa);
                 favoritos.setImageResource(R.drawable.ic_favorito);
+                Auxiliar.identi.remove(wallpa.getId());
                 Toast.makeText(VistaWallpaper.this, "Añadido a favoritos", Toast.LENGTH_SHORT).show();
             }else {
                 WallpaperService.removeWallpaperFavoritos(wallpa);

@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void cargarAdd(){
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(this,"ca-app-pub-2030839089746380/7557193024", adRequest, new InterstitialAdLoadCallback() {
+        InterstitialAd.load(this,"ca-app-pub-2030839089746380/8571713608", adRequest, new InterstitialAdLoadCallback() {
             @Override
             public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                 // The mInterstitialAd reference will be null until
@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         save(Auxiliar.estadoactualCheckBox);
         saveColumnas(Auxiliar.estadoSelectorColumnas);
         saveWallpaperFavoritos();
-        if (Auxiliar.iteradorAnuncios==4){
+        if (Auxiliar.iteradorAnuncios>=4){
             if (mInterstitial!= null) {
                 mInterstitial.show(this);
                 cargarAdd();
