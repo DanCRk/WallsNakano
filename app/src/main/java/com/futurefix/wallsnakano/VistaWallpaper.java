@@ -41,7 +41,6 @@ public class VistaWallpaper extends AppCompatActivity {
     AdView banner;
     LottieAnimationView animCarga;
 
-
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +65,8 @@ public class VistaWallpaper extends AppCompatActivity {
         banner.loadAd(adRequest);
 
         final Intent intent = getIntent();
-        url = Uri.parse(intent.getStringExtra("ItemUrl"));
-        // referencia de donde vienen
         Wallpaper wallpa = (Wallpaper) intent.getSerializableExtra("wpp");
+        url = Uri.parse(wallpa.getUrl());
 
         if (WallpaperService.favoritos.contains(wallpa)){
             favoritos.setImageResource(R.drawable.ic_favorito);
@@ -146,6 +144,7 @@ public class VistaWallpaper extends AppCompatActivity {
                 e.printStackTrace();
             }
         }else {
+            Toast.makeText(VistaWallpaper.this, "Estableciendo...", Toast.LENGTH_SHORT).show();
             try {
                 WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
                 BitmapDrawable drawable = (BitmapDrawable) img.getDrawable();

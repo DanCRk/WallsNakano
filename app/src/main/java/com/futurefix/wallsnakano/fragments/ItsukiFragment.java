@@ -173,6 +173,9 @@ public class ItsukiFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        cargarLista();
+        if (Auxiliar.cambiaronColumnasItsuki){
+            cargarLista();
+            Auxiliar.cambiaronColumnasItsuki=false;
+        }
     }
 }

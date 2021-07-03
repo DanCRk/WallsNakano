@@ -174,6 +174,9 @@ public class IchikaFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        cargarLista();
+        if (Auxiliar.cambiaronColumnasIchika){
+            cargarLista();
+            Auxiliar.cambiaronColumnasIchika=false;
+        }
     }
 }

@@ -95,7 +95,6 @@ public class FavActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Objects.requireNonNull(rc.getAdapter()).notifyDataSetChanged();
         try {
             String cuantoswpps = String.valueOf(WallpaperService.favoritos.size());
             int cuanto = WallpaperService.favoritos.size();

@@ -174,6 +174,9 @@ public class MikuFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        cargarLista();
+        if (Auxiliar.cambiaronColumnasMiku){
+            cargarLista();
+            Auxiliar.cambiaronColumnasMiku=false;
+        }
     }
 }

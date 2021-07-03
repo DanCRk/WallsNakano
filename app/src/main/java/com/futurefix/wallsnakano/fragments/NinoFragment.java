@@ -173,6 +173,9 @@ public class NinoFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        cargarLista();
+        if (Auxiliar.cambiaronColumnasNino){
+            cargarLista();
+            Auxiliar.cambiaronColumnasNino=false;
+        }
     }
 }
