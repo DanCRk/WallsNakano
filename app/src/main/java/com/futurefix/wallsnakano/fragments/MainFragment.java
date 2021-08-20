@@ -12,16 +12,18 @@ import android.view.ViewGroup;
 import com.futurefix.wallsnakano.R;
 import com.futurefix.wallsnakano.adaptadores.PagerAdapter;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.Objects;
 
 public class MainFragment extends Fragment {
 
     TabLayout tabLayout;
     ViewPager2 viewPager;
     PagerAdapter pagerAdapter;
-
     AdView banner;
 
     public MainFragment() { }
